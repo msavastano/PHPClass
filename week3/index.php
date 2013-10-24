@@ -12,36 +12,16 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
-        //$_POST
-        
-        //echo $_POST["fullname"];
-        
+        //$_POST        
+        //echo $_POST["fullname"];        
         //print_r($_POST);
-        $fullname = "";
-        $email = "";
-        $comm = ""; 
         
-        if ( count($_POST) ){
-            
-            if (array_key_exists("fullname", $_POST)){
-                $fullname = $_POST["fullname"];
-            }
-            
-            if (array_key_exists("email", $_POST)){
-                $email = $_POST["email"];
-            }
-            
-            if (array_key_exists("comm", $_POST)){
-                $comm = $_POST["comm"];
-            }
-            
-        }
         ?>
         
-        <form name="mainform" action="index.php" method="post">
-            FULL NAME: <input type="text" name="fullname" value="<?php echo $fullname; ?>" /> <br /> <!--name is key, value is value -->
-            EMAIL: <input type="text" name="email" value="<?php echo $email; ?>" /><br />
-            COMMENTS: <br /><textarea name="comm" cols="40" rows="5"><?php echo $comm; ?></textarea><br />
+        <form name="mainform" action="processForm.php" method="post">
+            FULL NAME: <input type="text" name="fullname" value="" /> <br /> <!--name is key, value is value -->
+            EMAIL: <input type="text" name="email" value="" /><br />
+            COMMENTS: <br /><textarea name="comm" cols="40" rows="5"></textarea><br />
                 
             <input type="submit" value="submit" />            
         </form>
