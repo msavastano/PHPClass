@@ -5,6 +5,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+include 'validator.php';
+
+$valObj = new Validator();
+
 $fullname = "";
 $email = "";
 $comm = ""; 
@@ -24,7 +28,21 @@ if ( count($_POST) ){
     }
 
 }
-    if ( !empty($fullname) && !empty($email)  && !empty($comm) ) {
+
+if ( $valObj->validateFullName( $fullname ) ){
+    echo "Full name is valid";
+}else{
+    echo "Full name is NOT valid";
+}
+if ( $valObj->validateEmail( $email ) ){
+    echo "Email is valid";
+}else{
+    echo "Email is NOT valid";
+}
+
+
+
+    if ( $valObj->validateFullName( $fullname ) && $valObj->validateEmail( $email )  && !empty($comm) ) {
         
         $dbh = new PDO("mysql:host=localhost;port=3306;dbname=phplab", "root","");
         
@@ -40,7 +58,7 @@ if ( count($_POST) ){
             echo "<h3> Info submitted</h3><p><a href='index.php'>Back to form</a></p>";
             
         }catch (PDOException $e) {
-             echo "DB error";
+             echo "DB error" . $e;
         }
     }else{
          echo "<h3> Info NOT submitted</h3><p><a href='index.php'>Back to form</a></p>";      

@@ -7,7 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Week 3</title>
     </head>
     <body>
         <?php
@@ -15,6 +15,23 @@ and open the template in the editor.
         //$_POST        
         //echo $_POST["fullname"];        
         //print_r($_POST);
+        $dbh = new PDO("mysql:host=localhost;port=3306;dbname=phplab", "root","");
+        $stmt = $dbh->prepare('SELECT * FROM week3');
+        $stmt->execute();
+        
+        $result = $stmt->fetchAll();
+        
+        if ( count($result) ) {
+            echo "<table border='1'>";
+            foreach ($result as $row){
+                //var_dump($row);
+                echo "<tr><td>", $row["fullname"], "</td><td>", $row["email"], "</td><td>", $row["comments"], "</td></tr>";                                 
+            }  
+            echo "</table>" ; 
+        }else{
+            echo "No rows returned";
+        }        
+                               
         
         ?>
         
