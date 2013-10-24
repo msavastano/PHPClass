@@ -31,13 +31,6 @@ class Validator {
             }else{
                 return false;
             }
-    }
+    }   
     
-    function validateComm( $comm ) {
-        if ( is_string( $comm ) && !empty( $comm ) )  {
-                return true;
-            }else{
-                return false;
-            }
-    }
 }   
