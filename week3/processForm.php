@@ -11,7 +11,7 @@ $valObj = new Validator();
 
 $fullname = "";
 $email = "";
-$comm = ""; 
+$comm = "";
 
 if ( count($_POST) ){
 
@@ -26,6 +26,8 @@ if ( count($_POST) ){
     if (array_key_exists("comm", $_POST)){
         $comm = $_POST["comm"];
     }
+    
+    
 
 }
 
