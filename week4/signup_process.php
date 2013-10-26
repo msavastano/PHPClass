@@ -7,6 +7,8 @@ include 'Config.php';
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ $dbh = new PDO(Config::DB_DNS, Config::DB_USER, Config::DB_PASSWORD);
+ 
 $username = ( isset($_POST["username"]) ? $_POST["username"] : "" );
 $email = ( isset($_POST["email"]) ? $_POST["email"] : "" );
 $password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
@@ -14,7 +16,7 @@ $password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
 
       if ( Validator::usernameIsValid( $username ) && Validator::emailIsValid( $email )  
               && Validator::passwordIsValid( $password ) ) {   
-        $dbh = new PDO(Config::DB_DNS, Config::DB_USER, Config::DB_PASSWORD);
+        
         
         try {
               $stmt = $dbh->prepare('insert into signup set username = :usernameValue, ' .

@@ -13,11 +13,11 @@ and open the template in the editor.
         <?php
         // put your code here
         if ( !empty($errorMsg) ){
-            echo "<p>",$errorMsg,"</p>";
+            echo $errorMsg;
         }
         
         if ( !empty($successMsg) ){
-            echo "<p>",$successMsg,"</p>";
+            echo $successMsg;
         }
         /* 
         if ( !empty($errorMsg) ) {
@@ -39,7 +39,7 @@ and open the template in the editor.
           <label>Password</label> <input type="password" name="password" value=""  /> 
               
           <br /><br />
-          <input type="submit" name="submit" value="submit">
+          <input type="submit" value="submit">
         </form>
     </body>
 </html>

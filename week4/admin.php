@@ -18,11 +18,11 @@ and open the template in the editor.
             header("Location:login.php");
         }
         ?>
-        
+         <h1> You Made IT! </h1>
         <a href="admin.php?logout=1">LOGOUT</a>
         
        <!---//USE GLOBAL GET VAR TO GET BACK TO LOGIN PAGE AND DESTROY SESSION--->
         
-        <h1> You Made IT! </h1>
+       
     </body>
 </html>

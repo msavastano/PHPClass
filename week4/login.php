@@ -54,7 +54,7 @@ and open the template in the editor.
             $password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
             
             if (!empty($username)  && !empty($password) && Validator::loginIsValid($username, $password)){
-                echo "GOOD";
+                
                 $_SESSION['isLoggedIn'] = true;
                 header("Location:admin.php");
             }else{
