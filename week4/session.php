@@ -23,21 +23,25 @@ and open the template in the editor.
         
         session_regenerate_id(true);
         
-        echo session_id(),"<br />";
-        echo $_SESSION["counter"];
+        
         
         //session_destroy();
         
-        $_SESSION['maxlife'] = (time() -  Config::MAX_SESSION_TIME);
         
-        if ( isset( $_SESSION['maxlife'] ) && $_SESSION['maxlife'] > Config::MAX_SESSION_TIME){
+        
+        if ( isset( $_SESSION['LAST_ACTIVITY'] ) && time() > $_SESSION['LAST_ACTIVITY'] +
+                Config::MAX_SESSION_TIME){
             
-            echo "Sorry timed out";
+            echo "Sorry timed out<br />";
             session_destroy();
         }else{
-            $_SESSION['maxlife'] = (time() + Config::MAX_SESSION_TIME);
+            $_SESSION['LAST_ACTIVITY'] = time();
         }
+        $_SESSION['LAST_ACTIVITY'] = time();
         
+        echo "Session ID    ",session_id(),"<br />";
+        echo "Session Counter    ",$_SESSION["counter"], "<br />";
+        echo time(), "    ",($_SESSION['LAST_ACTIVITY'] + Config::MAX_SESSION_TIME), "<br />";
         /*
          session_start();
     // set timeout period in seconds
