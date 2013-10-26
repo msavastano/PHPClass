@@ -14,13 +14,12 @@
 class Validator {
     //put your code here
     public static function emailIsValid( $email ) {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-       //^[a-zA-Z][a-zA-Z0-9]+[@][a-zA-Z0-9]+[\.][a-zA-z]{3,4}$/
-        //if ( is_string($email) && !empty($email) ) {
+        //if (filter_var($email, FILTER_VALIDATE_EMAIL)){ //PHP method validator
+        if ( preg_match( "^[a-zA-Z][a-zA-Z0-9]+[@][a-zA-Z0-9]+[\.][a-zA-z]{3,4}$^", $email )){ //regex validator
+        //if ( is_string($email) && !empty($email) ) { // just valid string
             return true;
         }
-            return false;
-        
+            return false;        
     }
     
     public static function passwordIsValid( $password ){        
