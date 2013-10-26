@@ -14,9 +14,9 @@
 class Validator {
     //put your code here
     public static function emailIsValid( $email ) {
-        //if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
        //^[a-zA-Z][a-zA-Z0-9]+[@][a-zA-Z0-9]+[\.][a-zA-z]{3,4}$/
-        if ( is_string($email) && !empty($email) ) {
+        //if ( is_string($email) && !empty($email) ) {
             return true;
         }
             return false;
@@ -55,3 +55,4 @@ class Validator {
         
     }
 }
+?>

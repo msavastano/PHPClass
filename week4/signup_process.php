@@ -29,26 +29,20 @@ $password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
               $stmt->bindParam(':passwordValue', $password, PDO::PARAM_STR);
               
               
-            if ( $stmt->execute() ){
+            if ( $stmt->execute(array(':usernameValue' => $username, ':emailValue' => $email,
+               ':passwordValue' => $password )) ){
                 $successMsg = "<h3>Info Submited</h3>";
-            } else {
-                $errorMsg = "<h3>Info NOT Submited</h3>";
-            }
+            } 
          
-            /*
-            if ( $stmt->execute() ){
-                $sucessMsg = "<h3>Info Submited</h3>";
-            } else {
-                $errorMsg = "<h3>Info NOT Submited</h3>";
-            }
-             * */
-             
-              
+           
 
           }catch (PDOException $e) {
-               echo "DB error" . $e;
+               $loginErrMsg = "DB error";
           }
+    }else {
+         $errorMsg = "<h3>Info NOT Submited</h3>";
     }
+    
 
     include "signup.php";
 

@@ -19,6 +19,8 @@ and open the template in the editor.
         if ( !empty($successMsg) ){
             echo $successMsg;
         }
+        
+        
         /* 
         if ( !empty($errorMsg) ) {
             echo "<p>",$errorMsg,"</p>";
