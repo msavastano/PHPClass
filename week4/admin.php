@@ -17,6 +17,12 @@ and open the template in the editor.
         if (empty($_SESSION['isLoggedIn']) ){
             header("Location:login.php");
         }
+        
+        if ( count( $_GET["logout"] ) ){
+            if ( $_GET["logout"] == "1" ) {
+                header("Location:login.php");
+            }
+        }
         ?>
          <h1> You Made IT! </h1>
         <a href="admin.php?logout=1">LOGOUT</a>

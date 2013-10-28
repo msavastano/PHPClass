@@ -18,17 +18,7 @@ and open the template in the editor.
         
         if ( !empty($successMsg) ){
             echo $successMsg;
-        }
-        
-        
-        /* 
-        if ( !empty($errorMsg) ) {
-            echo "<p>",$errorMsg,"</p>";
-        }
-        
-        if ( !empty($sucessMsg) ) {
-            echo "<p>",$sucessMsg,"</p>";
-        }*/
+        }                
         ?>
         
         <form name="mainform" method="post" action="signup_process.php">
