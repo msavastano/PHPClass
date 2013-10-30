@@ -44,7 +44,11 @@ and open the template in the editor.
             exit();
         }
         
-        
+        if (!isset($_SESSION["counter"]) || $_GET['user'] ){
+            $_SESSION["counter"] = 0;
+        }else{
+            $_SESSION["counter"] = 1;
+       }
         
         
          $_SESSION['token'] = $token;
@@ -53,13 +57,27 @@ and open the template in the editor.
 
             $password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
             
+           
             if (!empty($username)  && !empty($password) && Validator::loginIsValid($username, $password)){
                 
-                $_SESSION['isLoggedIn'] = true;
-                header("Location:admin.php");
-            }else{
+               $_SESSION['isLoggedIn'] = true;
+                header("Location:admin.php");      
+            }else if($_SESSION["counter"]){
                 echo "Username or password is incorrect";
+                $_SESSION['isLoggedIn'] = false;
             }
+          
+            
+            //if (!$_SESSION['isLoggedIn']) {
+                //$_SESSION['isLoggedIn'] = false;
+              //  echo "Username or password is incorrect";
+            //} else {
+                
+            //}
+            
+            //if (empty($username)  || empty($password) || Validator::loginIsValid($username, $password)){
+         //echo "<br />counter is ", $_SESSION["counter"], "<br />logged in  is ", $_SESSION['isLoggedIn'];       
+         
         ?>
         
         <form name="mainform" method="post" action="login.php">

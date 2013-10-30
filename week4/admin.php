@@ -20,7 +20,8 @@ and open the template in the editor.
         
         if ( count( $_GET["logout"] ) ){
             if ( $_GET["logout"] == "1" ) {
-                header("Location:login.php");
+                
+                header("Location:login.php?user=1");
             }
         }
         ?>
