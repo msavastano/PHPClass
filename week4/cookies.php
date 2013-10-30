@@ -11,7 +11,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+        // test cookies
         setcookie("lastvisit", date('m/d/y'), time()+60*60*24*30);
         
         echo $_COOKIE["lastvisit"];

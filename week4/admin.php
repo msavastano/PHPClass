@@ -11,17 +11,19 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        //start a session and regenerate an id
         session_start();
         session_regenerate_id();
         
+        //if there is no log in redirect back to login page
         if (empty($_SESSION['isLoggedIn']) ){
             header("Location:login.php");
         }
         
+        //check $_GET and redirect if logout is presses
         if ( count( $_GET["logout"] ) ){
-            if ( $_GET["logout"] == "1" ) {
-                
-                header("Location:login.php?user=1");
+            if ( $_GET["logout"] == "1" ) {                
+                header("Location:login.php?user=1"); //set a get var
             }
         }
         ?>

@@ -11,24 +11,19 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+        // 
         session_start(); // need this
         include 'Config.php';
-        
+        //session counter to test session destroy
         if (!isset($_SESSION["counter"])){
             $_SESSION["counter"] = 0;
         }else{
             $_SESSION["counter"]++;
         }
         
-        session_regenerate_id(true);
+        session_regenerate_id(true);  
         
-        
-        
-        //session_destroy();
-        
-        
-        
+        //calculate sesion time and destroy based on last activity
         if ( isset( $_SESSION['LAST_ACTIVITY'] ) && time() > $_SESSION['LAST_ACTIVITY'] +
                 Config::MAX_SESSION_TIME){
             
@@ -42,19 +37,7 @@ and open the template in the editor.
         echo "Session ID    ",session_id(),"<br />";
         echo "Session Counter    ",$_SESSION["counter"], "<br />";
         echo time(), "    ",($_SESSION['LAST_ACTIVITY'] + Config::MAX_SESSION_TIME), "<br />";
-        /*
-         session_start();
-    // set timeout period in seconds
-    $inactive = 600;
-    // check to see if $_SESSION['timeout'] is set
-    if(isset($_SESSION['timeout']) ) {
-        $session_life = time() - $_SESSION['start'];
-        if($session_life > $inactive){ 
-            session_destroy(); header("Location: logoutpage.php"); 
-         }
-    }
-    $_SESSION['timeout'] = time();
-         */
+        
         ?>
         
         

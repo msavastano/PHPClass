@@ -16,8 +16,6 @@ and open the template in the editor.
         include 'Validator.php';
         include 'Config.php';
         
-        //$valObj = new Validator();
-        
         $testEmail = "test@mail.com";
         
         if (Validator::emailIsValid($testEmail)) {
@@ -30,17 +28,7 @@ and open the template in the editor.
         $stmt = $dbh->prepare('SELECT * FROM week3');
         $stmt->execute();
 
-        //$result = $stmt->fetchAll();
-        
         print_r($result);
-        
-        
-        
-        //echo $_SESSION['maxlife'];
-        
-       // unset($_SESSION['maxlife']);
-        
-       // echo $_SESSION['maxlife'];
         
         echo "<h1>" , $_SESSION["counter"], "</h1>";
         

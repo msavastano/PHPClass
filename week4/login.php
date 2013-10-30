@@ -11,15 +11,14 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
-        session_start();
-        
-        
+        //start sessin and generate new id
+        session_start();         
         session_regenerate_id(true);
         
         include "Config.php";
         include "Validator.php";
         
+        //give a unique token
         $token = uniqid();
         
         //avoid session hijack
@@ -44,6 +43,7 @@ and open the template in the editor.
             exit();
         }
         
+        //use counter to see if user is loggin out from admin.php so correct message can be echoed to user
         if (!isset($_SESSION["counter"]) || $_GET['user'] ){
             $_SESSION["counter"] = 0;
         }else{
@@ -52,32 +52,18 @@ and open the template in the editor.
         
         
          $_SESSION['token'] = $token;
-         
+            //set variables
             $username = ( isset($_POST["username"]) ? $_POST["username"] : "" );
-
             $password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
             
-           
-            if (!empty($username)  && !empty($password) && Validator::loginIsValid($username, $password)){
-                
+            // if logged i, redirect to admin page
+            if (!empty($username)  && !empty($password) && Validator::loginIsValid($username, $password)){                
                $_SESSION['isLoggedIn'] = true;
                 header("Location:admin.php");      
             }else if($_SESSION["counter"]){
                 echo "Username or password is incorrect";
                 $_SESSION['isLoggedIn'] = false;
-            }
-          
-            
-            //if (!$_SESSION['isLoggedIn']) {
-                //$_SESSION['isLoggedIn'] = false;
-              //  echo "Username or password is incorrect";
-            //} else {
-                
-            //}
-            
-            //if (empty($username)  || empty($password) || Validator::loginIsValid($username, $password)){
-         //echo "<br />counter is ", $_SESSION["counter"], "<br />logged in  is ", $_SESSION['isLoggedIn'];       
-         
+            }     
         ?>
         
         <form name="mainform" method="post" action="login.php">

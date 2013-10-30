@@ -11,11 +11,10 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+        // set correct statement to echo
         if ( !empty($errorMsg) ){
             echo $errorMsg;
-        }
-        
+        }        
         if ( !empty($successMsg) ){
             echo $successMsg;
         }                
