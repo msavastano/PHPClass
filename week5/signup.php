@@ -22,7 +22,7 @@ and open the template in the editor.
              if($signupClass->entryIsValid() ){
                  $signupClass->saveEntry();
                  //show a save entry message and have a link to the login page or 
-                 //redirect to login page-hint:flash messages
+                 //redirect to login page-hint : flash messages
              }else{
                   $entryErrors = $signupClass->getErrors();
              }
