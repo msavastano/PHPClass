@@ -21,7 +21,7 @@ and open the template in the editor.
         }
         
         //check $_GET and redirect if logout is presses
-        if ( count( $_GET["logout"] ) ){
+        if ( isset( $_GET["logout"] ) ){
             if ( $_GET["logout"] == "1" ) {                
                 header("Location:login.php?user=1"); //set a get var
             }

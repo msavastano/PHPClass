@@ -44,11 +44,13 @@ and open the template in the editor.
         }
         
         //use counter to see if user is loggin out from admin.php so correct message can be echoed to user
-        if (!isset($_SESSION["counter"]) || $_GET['user'] ){
+        //if(isset($_GET['user'])){ $u = $_GET['user']; }
+        if (!isset($_SESSION["counter"]) || isset($_GET['user'] )){
             $_SESSION["counter"] = 0;
         }else{
             $_SESSION["counter"] = 1;
        }
+       
         
         
          $_SESSION['token'] = $token;
