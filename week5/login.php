@@ -17,8 +17,7 @@ and open the template in the editor.
             if (array_key_exists("username", $_POST)
                     && array_key_exists("password", $_POST)) {
                 if ( Validator::loginIsValid($_POST['username'], $_POST['password'])) {
-                    $_SESSION['isLoggedIn'] = true;
-                    
+                    $_SESSION['isLoggedIn'] = true;                    
                 }
              }
              
