@@ -15,7 +15,7 @@ class Signup extends DB {
     //put your code here
     
     protected $errors = array();
-
+    
     public function userNameIsTaken( $username ) {        
         $db = $this->getDB();
         if ( null != $db ) {
@@ -53,7 +53,7 @@ class Signup extends DB {
         if (array_key_exists('username', $_POST)){
             if ( !Validator::usernameIsValid($_POST['username'])) {
                 $this->errors['username'] = "Username is not valid";
-           }else if (userNameIsTaken( $_POST['username'] )){  
+           }else if ($this->userNameIsTaken( $_POST['username'] )){  
                $this->errors['username'] = "Username is taken";
             }
         }else{
@@ -79,6 +79,7 @@ class Signup extends DB {
         //hash password
         //if execute
         if (! $this->entryIsValid() ) return false;
+        $_POST['password'] = sha1($_POST['password']);
         $db = $this->getDB();
         if (null != $db) {
             $stmt = $db->prepare('insert into signup set username = :usernameValue, '

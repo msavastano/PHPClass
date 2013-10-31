@@ -21,6 +21,7 @@ and open the template in the editor.
              
              if($signupClass->entryIsValid() ){
                  $signupClass->saveEntry();
+                 header("Location: login.php");
                  //show a save entry message and have a link to the login page or 
                  //redirect to login page-hint : flash messages google it
              }else{

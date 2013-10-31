@@ -13,6 +13,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        $error = "";
         if (count($_POST)) { //easier way t do this -- use validator to see if empty
             if (array_key_exists("username", $_POST)
                     && array_key_exists("password", $_POST)) {
@@ -21,17 +22,21 @@ and open the template in the editor.
                 }
              }
              
-             if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']=true){
+             if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']==true){
                  header("Location: admin.php");
+                 $error = "login success";
+             }else{
+                 $error = "login failed";
              }
-        }
+       
+      }
         ?>
         <h1>Login</h1>
         <form name="mainform" action="login.php" method="post">
             
             Username: <input type="text" name="username" /> <br />
             Password: <input type="password" name="password" /> <br />
-                      
+                  <?php echo $error; ?>    
             <input type="submit" value="Submit" />
             
         </form>
