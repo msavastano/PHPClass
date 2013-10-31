@@ -36,7 +36,7 @@ class Validator {
     }
     
       public static function loginIsValid( $username, $password ) {
-        
+        //static class cannot call its own class with '$this->'
         $password = sha1($password);
         $dbCls = new DB();
         $db = $dbCls->getDB();

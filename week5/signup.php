@@ -36,7 +36,14 @@ and open the template in the editor.
                 echo '<p>' , $entryErrors['email'], ' </p>';
             }  ?>
             Username: <input type="text" name="username" /> <br />
+            <?php if (!empty($entryErrors['username']) ) {
+                echo '<p>' , $entryErrors['username'], ' </p>';
+            }  ?>
             Password: <input type="password" name="password" /> <br />
+            <?php if (!empty($entryErrors['password']) ) {
+                echo '<p>' , $entryErrors['password'], ' </p>';
+            }  ?>
+            
           
             <input type="submit" value="Submit" />
                         
