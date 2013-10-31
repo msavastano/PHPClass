@@ -53,8 +53,8 @@ class Signup extends DB {
         if (array_key_exists('username', $_POST)){
             if ( !Validator::usernameIsValid($_POST['username'])) {
                 $this->errors['username'] = "Username is not valid";
-            }else if (userNameIsTaken( $username )){  
-                $this->errors['username'] = "Username is taken";
+           }else if (userNameIsTaken( $_POST['username'] )){  
+               $this->errors['username'] = "Username is taken";
             }
         }else{
                 $this->errors['username'] = "Username is missing";
