@@ -13,6 +13,7 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        
         print_r($_SESSION);
         if ( !isset($_SESSION['isLoggedIn']) || $_SESSION['isLoggedIn'] != true){
             //header('Location: login.php');

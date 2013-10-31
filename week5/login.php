@@ -13,18 +13,20 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        $err = "";
         
         if ( Validator::loginIsValidPost() ) {
-                $_SESSION["isLoggedIn"] = true;
-                
-             }else {
-                 $_SESSION["isLoggedIn"] = 0; 
-                 session_destroy();
-             }
+                $_SESSION["isLoggedIn"] = true;                
+        }else {
+            $_SESSION["isLoggedIn"] = 0;
+            session_destroy();                
+        }
             
-            if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
-                header("Location: admin.php");
-            }
+        if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
+            header("Location: admin.php");
+        }
+            
+       
         
        /*
         
@@ -51,6 +53,7 @@ and open the template in the editor.
             
             Username: <input type="text" name="username" /> <br />
             Password: <input type="password" name="password" /> <br />
+            <?php echo '<p id="err">', $err, '</p>'; ?>
                   
             <input type="submit" value="Submit" />
             
