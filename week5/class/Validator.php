@@ -23,20 +23,36 @@ class Validator {
 
     public static function usernameIsValid( $str ) {
        if ( is_string($str) && !empty($str) ) {
+           
            return true;
-       }        
+       }    
+      
        return false; 
     }
 
     public static function passwordIsValid( $str ) {
        if ( is_string($str) && !empty($str) ) {
+            
            return true;
        }        
        return false; 
     }
     
+     public static function loginIsValidPost() {
+          if ( !array_key_exists("username", $_POST) 
+                || !array_key_exists("password", $_POST) ) {
+               return false;
+          }
+          return Validator::loginIsValid($_POST["username"],$_POST["password"] );
+     }
+     
       public static function loginIsValid( $username, $password ) {
         //static class cannot call its own class with '$this->'
+           if( !Validator::usernameIsValid($username) 
+                    || !Validator::passwordIsValid($password) ) {
+             return false;
+             
+           }   
         $password = sha1($password);
         $dbCls = new DB();
         $db = $dbCls->getDB();
@@ -46,10 +62,16 @@ class Validator {
             $stmt->bindParam(':passwordValue', $password, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
+           
+            if (is_array($result) && count($result) ){ 
+                
+                return true;
+            }
             
-            if ( count($result) ) return true;
         }
+         
         return false;
+       
     }
     
     public static function signupEntryIsValid() {

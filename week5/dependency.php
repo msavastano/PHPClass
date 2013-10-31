@@ -14,5 +14,4 @@ spl_autoload_register(function($class) { //includes all files for site
 session_start();
 session_regenerate_id(true);
         
-        
 ?>
