@@ -12,7 +12,11 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // put your code here
+        //session_destroy();
+        //unset($_SESSION['password']);
+        if ( isset($_SESSION['isLoggedIn']) || $_SESSION['isLoggedIn'] != true){
+            header('Location: login.php');
+        }
         ?>
         
          <form name="mainform" action="admin.php" method="post">
