@@ -43,6 +43,7 @@ class Validator {
                 || !array_key_exists("password", $_POST) ) {
                return false;
           }
+          
           return Validator::loginIsValid($_POST["username"],$_POST["password"] );
      }
      

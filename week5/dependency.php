@@ -13,5 +13,14 @@ spl_autoload_register(function($class) { //includes all files for site
 // session
 session_start();
 session_regenerate_id(true);
-        
+
+if ( isset( $_SESSION['last_activity'] ) && time() > $_SESSION['last_activity'] +
+        Config::MAX_SESSION_TIME){            
+    echo "Sorry timed out<br />";
+    session_destroy();
+}else{
+    $_SESSION['last_activity'] = time();
+}
+    $_SESSION['last_activity'] = time();
+
 ?>
