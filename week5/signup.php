@@ -1,46 +1,41 @@
 <?php include 'dependency.php'; ?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Sign Up - Week 5</title>
     </head>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <body>
         <?php
         // check if post
         $entryErrors = array();
         
-         if ( count($_POST) ) {
-             
-             $signupClass = new Signup();
-             
-             if($signupClass->entryIsValid() ){
-                 $signupClass->saveEntry();
+         if ( count($_POST) ) {             
+             $signupClass = new Signup();   //new signup object          
+             if($signupClass->entryIsValid() ){  //verify info
+                 $signupClass->saveEntry(); //method inserts dat into database
                  header("Location: login.php");
-                 //show a save entry message and have a link to the login page or 
-                 //redirect to login page-hint : flash messages google it
+                 //show a save entry message and have a link to the login page 
              }else{
-                  $entryErrors = $signupClass->getErrors();
+                  $entryErrors = $signupClass->getErrors();//sets entry errs
              }
          }
         ?>
-        
-         <form name="mainform" action="signup.php" method="post">
+        <div id="divOne">
+            <h1 id="h">Sign Up</h1>
+            <form name="mainform" action="signup.php" method="post">
             
-            Email: <input type="text" name="email" /> <br />
+            Email: <br /><input type="text" name="email" /> <br />
             <?php if (!empty($entryErrors['email']) ) {
                 echo '<p>' , $entryErrors['email'], ' </p>';
             }  ?>
-            Username: <input type="text" name="username" /> <br />
+            Username:<br /> <input type="text" name="username" /> <br />
             <?php if (!empty($entryErrors['username']) ) {
                 echo '<p>' , $entryErrors['username'], ' </p>';
             }  ?>
-            Password: <input type="password" name="password" /> <br />
+            Password:<br /> <input type="password" name="password" /> <br />
             <?php if (!empty($entryErrors['password']) ) {
                 echo '<p>' , $entryErrors['password'], ' </p>';
             }  ?>
@@ -48,7 +43,9 @@ and open the template in the editor.
           
             <input type="submit" value="Submit" />
                         
-        </form>
-        
+            </form>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+        <script src="js/jscr.js" type="text/javascript"></script>
     </body>
 </html>

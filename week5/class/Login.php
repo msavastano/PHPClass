@@ -1,19 +1,9 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Login
- *
- * @author gforti
- */
+//unused class- this method is in validator class
 class Login extends DB {
-    //put your code here
-        
+    
+    //checks login from user against db        
     public function loginIsValid( $username, $password ) {
         
         $password = sha1($password);

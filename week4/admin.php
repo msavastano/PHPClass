@@ -7,7 +7,8 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Welcome - Week 4</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body>
         <?php
@@ -15,15 +16,19 @@ and open the template in the editor.
         session_start();
         session_regenerate_id();
         
+        //TEST CODE
+        print_r($_SESSION);
+        
         //if there is no log in redirect back to login page
-        if (empty($_SESSION['isLoggedIn']) ){
+        if (empty($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn'] ){            
             header("Location:login.php");
         }
         
         //check $_GET and redirect if logout is presses
         if ( isset( $_GET["logout"] ) ){
-            if ( $_GET["logout"] == "1" ) {                
-                header("Location:login.php?user=1"); //set a get var
+            if ( $_GET["logout"] == "1" ) { 
+                session_destroy();
+                header("Location:login.php?user=1"); //set a get var                
             }
         }
         ?>
@@ -32,6 +37,6 @@ and open the template in the editor.
         
        <!---//USE GLOBAL GET VAR TO GET BACK TO LOGIN PAGE AND DESTROY SESSION--->
         
-       
+      <script src="js/jscr.js" ></script> 
     </body>
 </html>

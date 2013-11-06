@@ -1,21 +1,11 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Signup
- *
- * @author gforti
- */
 class Signup extends DB {
     //put your code here
     
     protected $errors = array();
     
+    //is username in da already
     public function userNameIsTaken( $username ) {        
         $db = $this->getDB();
         if ( null != $db ) {
@@ -24,20 +14,19 @@ class Signup extends DB {
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);            
             if ( is_array($result) && count($result) ) {
-                return true;
+                return true; //if name is in db
             }
         }
         return false;        
     }
-    
+    //1st step, calls methods
     public function entryIsValid(){
         $this->emailEntryIsValid(); 
         $this->usernameEntryIsValid();   
-        $this->passwordEntryIsValid();   
-       
+        $this->passwordEntryIsValid();      
         return (count($this->errors) ? false : true);
     }
-    
+    //invalid or missing email
     public function emailEntryIsValid(){
         if (array_key_exists('email', $_POST)){
                 if ( !Validator::emailIsValid($_POST['email'])){
@@ -53,7 +42,7 @@ class Signup extends DB {
         if (array_key_exists('username', $_POST)){
             if ( !Validator::usernameIsValid($_POST['username'])) {
                 $this->errors['username'] = "Username is not valid";
-           }else if ($this->userNameIsTaken( $_POST['username'] )){  
+           }else if ($this->userNameIsTaken( $_POST['username'] )){ //checks to see if username is already in database 
                $this->errors['username'] = "Username is taken";
             }
         }else{
@@ -61,7 +50,7 @@ class Signup extends DB {
             }
             return (empty($this->errors['username']) ? true : false);
     }
-    
+    //is password valid
     public function passwordEntryIsValid(){
         if (array_key_exists('password', $_POST)){
             if ( !Validator::passwordIsValid($_POST['password'])) {
