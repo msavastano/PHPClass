@@ -25,7 +25,7 @@
         }      
         //end php
         ?>
-        <h1 id="h">Welcome</h1>
+        <h1 id="h">Welcome <?php if( isset($_SESSION['username'])) echo $_SESSION['username']; ?></h1>
         <div id="divOne">
          <form name="mainform" action="admin.php" method="post">     
             Company Name:<br />    <input type="text" name="companyname" /><br />            

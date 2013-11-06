@@ -22,7 +22,8 @@
         
         //check for username and password validation with class.  Set session var and err mess
         if (isset($_POST['username']) ){
-            if ( Validator::loginIsValidPost() ) {                           
+            if ( Validator::loginIsValidPost() ) { 
+                $_SESSION['username'] = $_POST['username'];
                 $_SESSION["isLoggedIn"] = true; 
             }else {
                 $_SESSION["isLoggedIn"] = false; 
