@@ -11,6 +11,7 @@
 <div class = "border">
 <?php
 // concat and print name, ucwords
+
 echo "<b>concat and print name with  ucwords</b><br />";
 $firstname = 'mike';
 $lastname = 'savastano';
