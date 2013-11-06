@@ -12,9 +12,7 @@ $password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
 
        //validate entries
       if ( Validator::usernameIsValid( $username ) && Validator::emailIsValid( $email )  
-              && Validator::passwordIsValid( $password ) ) {   
-        
-        
+              && Validator::passwordIsValid( $password ) ) { 
         try {//validate database
               $stmt = $dbh->prepare('insert into signup set username = :usernameValue, ' .
                      'email = :emailValue, password = :passwordValue'  );
@@ -28,7 +26,7 @@ $password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
               //check to make sure execute
             if ( $stmt->execute(array(':usernameValue' => $username, ':emailValue' => $email,
                ':passwordValue' => $password )) ){
-                $successMsg = "<h3>Info Submited</h3>";
+                $successMsg = "<h3>Info Submited</h3><br /><p> Got to <a href='login.php'>login </a> page</P>";
             }    
           }catch (PDOException $e) {
                $loginErrMsg = "DB error";

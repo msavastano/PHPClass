@@ -17,7 +17,7 @@ and open the template in the editor.
         session_regenerate_id();
         
         //TEST CODE
-        print_r($_SESSION);
+        //print_r($_SESSION);
         
         //if there is no log in redirect back to login page
         if (empty($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn'] ){            
@@ -32,7 +32,7 @@ and open the template in the editor.
             }
         }
         ?>
-         <h1> You Made IT! </h1>
+         <h1> <?php echo $_SESSION['username']; ?> Made IT! </h1>
         <a href="admin.php?logout=1">LOGOUT</a>
         
        <!---//USE GLOBAL GET VAR TO GET BACK TO LOGIN PAGE AND DESTROY SESSION--->

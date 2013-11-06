@@ -11,8 +11,8 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        // 
-        session_start(); // need this
+       
+        session_start(); // need this for sessions
         include 'Config.php';
         //session counter to test session destroy
         if (!isset($_SESSION["counter"])){
@@ -38,11 +38,6 @@ and open the template in the editor.
         echo "Session Counter    ",$_SESSION["counter"], "<br />";
         echo time(), "    ",($_SESSION['LAST_ACTIVITY'] + Config::MAX_SESSION_TIME), "<br />";
         
-        ?>
-        
-        
-       
-
-
+        ?>    
     </body>
 </html>

@@ -13,7 +13,7 @@
         session_regenerate_id(true);
         
         //TEST CODE
-        print_r($_SESSION);
+        //print_r($_SESSION);
         
         include "Config.php";
         include "Validator.php";
@@ -50,7 +50,8 @@
             
             // if logged in, redirect to admin page
             if (!empty($username)  && !empty($password) && Validator::loginIsValid($username, $password)){                
-               $_SESSION['isLoggedIn'] = true;               
+               $_SESSION['isLoggedIn'] = true;
+               $_SESSION['username'] = $username;
                 header("Location:admin.php");      
             }else if (isset ($_POST['username'])){
                 echo "Username or password is incorrect";
