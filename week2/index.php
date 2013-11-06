@@ -51,6 +51,7 @@ if (count($_POST) ) {
           <input type="submit" name="submit" value="submit">
     </form>
     
+    
     <?php
         $fullname = $_POST["name"];
         $pass = $_POST["pass"];       
