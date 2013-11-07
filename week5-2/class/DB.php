@@ -2,7 +2,7 @@
 
 //database class
 class DB {
-        
+    //get data object    
     protected $db = null;
 
     public function getDB() {        

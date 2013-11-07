@@ -5,23 +5,25 @@
     color:firebrick;
 }
 
+////form div
 .divClass
 {
     border:1px black solid;
     border-radius:5px;
     background-color: grey;
-    width:300px;
+    width:400px;
     padding:10px;
     text-align:center;
     box-shadow: 3px 2px 2px;
 }
 
+//guestbook data div
 .divClass2
 {
     border:1px black solid;
     border-radius:5px;
     background-color: blanchedalmond;
-    width:300px;
+    width:400px;
     padding:10px;
     text-align:center;
     box-shadow: 3px 2px 2px;
@@ -33,7 +35,7 @@
     color:lightcoral;
 }
 
-td
+.divClass2 td
 {
-    width:100px;
+    padding: 5px;
 }

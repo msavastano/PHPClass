@@ -9,9 +9,9 @@
     </head>
     <body>
         <?php
-            Login::confirmAccess();            
-            $gb = new Guestbook();
-            $gb->entryIsValid();
+            Login::confirmAccess();    // allows access to page        
+            $gb = new Guestbook(); // creates object
+            $gb->entryIsValid();//checks for valid entries and fires off processing if true
             //$gb->displayGuestbook();
         ?>
         <h1 class="h">Sign My Guestbook</h1>
@@ -24,8 +24,7 @@
         </form>
         </div>
         <div class="divClass2">
-             <?php $gb->displayGuestbook(); ?>
-            
+             <?php $gb->displayGuestbook();//display data  ?>           
         </div>
         
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>

@@ -2,12 +2,9 @@
 
 
 class Guestbook extends DB {
-    //validate the user posts
-    
-    
+    //gets data for display
     public function getGuestBookData() {
-        $db = $this->getDB();
-        
+        $db = $this->getDB();        
         if (NULL != $db ){
             $stmt = $db->prepare('select name, email, comments from guestbook');
             $stmt->execute();
@@ -18,12 +15,11 @@ class Guestbook extends DB {
     }
         
     public function displayGuestbook(){
-        $results = $this->getGuestBookData();
-       
-
+        $results = $this->getGuestBookData();      
+        //if results are there, dislay in table form
         if (count($results) ){
             echo '<table border="1">';
-            echo '<tr> <td> Name </td> <td> Email </td> <td> Comments </td> </tr>';
+            echo '<tr> <td> Email </td> <td> Name </td> <td> Comments </td> </tr>';
             foreach ($results as $value){
                 echo '<tr>';
                 echo '<td>',$value['email'],'</td>';
@@ -32,15 +28,13 @@ class Guestbook extends DB {
                 echo '</tr>';                
             }
             echo '</table>';
-             //print_r($results);
-            /*for ($i = 0; $i < count($results); $i++){                
-                $results[$i]['name'];
-            }*/
+            
         }else{
             echo "NO comments posted";
         }
     }
     
+    //calls validator static methods to check data, fires off process function if valid
     public function entryIsValid(){
         if(isset($_POST['name'])){
             if (Validator::nameIsValid($_POST['name']) && Validator::emailIsValid($_POST['email']) && 
@@ -52,8 +46,7 @@ class Guestbook extends DB {
 
     public function processGuestbook(){
     //check post data
-    //put into db
-    
+    //put into db    
     $db = $this->getDB();
     
     if (null != $db) {
@@ -63,14 +56,11 @@ class Guestbook extends DB {
             $stmt->bindParam(':commentsValue', $_POST['comments'], PDO::PARAM_STR);
             $stmt->bindParam(':emailValue', $_POST['email'], PDO::PARAM_STR);
             if ($stmt->execute() ){
+                header("location: guestbook.php");
                 return true;
             }
         }
-        return false;
-    
-    
-    
-     
+        return false;  
     }
  }
     
