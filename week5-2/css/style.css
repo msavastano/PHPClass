@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.h
+{
+    color:firebrick;
+}
+
+.divClass
+{
+    border:1px black solid;
+    border-radius:5px;
+    background-color: grey;
+    width:300px;
+    padding:10px;
+    text-align:center;
+    box-shadow: 3px 2px 2px;
+}
+
+.divClass2
+{
+    border:1px black solid;
+    border-radius:5px;
+    background-color: blanchedalmond;
+    width:300px;
+    padding:10px;
+    text-align:center;
+    box-shadow: 3px 2px 2px;
+    
+}
+
+#err
+{
+    color:lightcoral;
+}
+
+td
+{
+    width:100px;
+}
