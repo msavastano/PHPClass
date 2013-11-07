@@ -1,3 +1,4 @@
+
 <?php
 spl_autoload_register(function($class) { //includes all files for site
     include 'class/'.$class . '.php';

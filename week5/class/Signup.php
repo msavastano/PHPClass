@@ -1,7 +1,7 @@
 <?php
 
 class Signup extends DB {
-    //put your code here
+    
     
     protected $errors = array();
     
