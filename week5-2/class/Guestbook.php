@@ -43,7 +43,7 @@ class Guestbook extends DB {
                     }  
             }
     }
-
+    
     public function processGuestbook(){
     //check post data
     //put into db    
