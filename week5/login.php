@@ -52,7 +52,7 @@
         <h1 id="h">Login</h1>
         <div id="divOne">
         <form name="mainform" action="login.php" method="post">            
-            Username: <input type="text" name="username" /> <br />
+            Username: <input type="text" name="username" /> <br /><br />
             Password: <input type="password" name="password" /> <br />
             <?php echo '<p id="err">', $err, '</p>'; ?> <!---error message, if set -->                  
             <input type="submit" value="Submit" />            
