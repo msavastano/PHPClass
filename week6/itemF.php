@@ -36,8 +36,8 @@ and open the template in the editor.
             if (isStringValid( $_POST['name'] ) && isStringValid( $_POST['address'] ) && isStringValid( $_POST['city'] ) &&
                     isStringValid( $_POST['state'] ) && isStringValid( $_POST['zip'] )){
                 if (null != $db) {
-                    $stmt = $db->prepare( 'insert into addressbook set name = :nameValue,'
-                            . 'address = :addressValue,
+                    $stmt = $db->prepare( 'insert into addressbook set name = :nameValue,
+                            address = :addressValue,
                             city = :cityValue,
                             state = :stateValue,
                             zip = :zipValue' );
