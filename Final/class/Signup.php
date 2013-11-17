@@ -27,7 +27,7 @@ class Signup extends DB {
     //1st step, calls methods
     public function entryIsValid(){
         $this->emailEntryIsValid();         
-        $this->webpageIsValid();   
+        $this->websiteEntryIsValid();   
         $this->passwordEntryIsValid();
         /*Validator::webpageIsValid($str);
         Validator::emailIsValid($str);
@@ -48,7 +48,7 @@ class Signup extends DB {
     
     public function websiteEntryIsValid(){
         if (array_key_exists('website', $_POST)){
-            if ( !Validator::usernameIsValid($_POST['website'])) {
+            if ( !Validator::webpageIsValid($_POST['website'])) {
                 $this->errors['website'] = "Website is not valid";
            }else if ($this->websiteNameIsTaken( $_POST['website'] )){ //checks to see if username is already in database 
                $this->errors['website'] = "Website is taken";
@@ -79,9 +79,9 @@ class Signup extends DB {
         $_POST['password'] = sha1($_POST['password']);
         $db = $this->getDB();
         if (null != $db) {
-            $stmt = $db->prepare('insert into signup set username = :usernameValue, '
+            $stmt = $db->prepare('insert into users set website = :websiteValue, '
                     . 'email = :emailValue, password = :passwordValue');
-            $stmt->bindParam(':webpageValue', $_POST['webpage'], PDO::PARAM_STR);
+            $stmt->bindParam(':websiteValue', $_POST['website'], PDO::PARAM_STR);
             $stmt->bindParam(':passwordValue', $_POST['password'], PDO::PARAM_STR);
             $stmt->bindParam(':emailValue', $_POST['email'], PDO::PARAM_STR);
             if ($stmt->execute() ){

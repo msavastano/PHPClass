@@ -13,8 +13,15 @@
         // create signup object
         if (count($_POST)){
             $signup = new Signup();
+            if($signup->entryIsValid() ){  //verify info
+                 $signup->saveEntry(); //method inserts dat into database
+                 //header("Location: login.php");
+                 //show a save entry message and have a link to the login page 
+             }else{
+                  $entryErrors = $signup->getErrors();//sets entry errs
+             }
         }
-       
+       print_r($entryErrors)
         ?>
         
         <div id="divOne">
