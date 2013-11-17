@@ -20,21 +20,24 @@
         //set bad login message var
         $err = "";
         print_r($_SESSION);
+        echo "<br />";
         print_r($_POST);
         //check for username and password validation with class.  Set session var and err mess
-        if (isset($_POST['username']) ){
+        if (isset($_POST['email']) ){
             if ( Validator::loginIsValidPost() ) { 
-                $_SESSION['username'] = $_POST['username'];
+                //$_SESSION['email'] = $_POST['email'];
+                $err = "Email and Password correct"; 
                 $_SESSION["isLoggedIn"] = true; 
             }else {
                 $_SESSION["isLoggedIn"] = false; 
-                $err = "Username or Password incorrect";                
+                $err = "Email or Password incorrect";                
             }
         }  
         
       //if session var is 1, redirect to admin page  
       if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
         //header("Location: admin.php");
+        //echo "YOu're in";
       }   
       //avoid session hijack using tokens - token set on dependency page
         if( !isset($_SESSION['token']) ){
@@ -52,7 +55,7 @@
         
         <h1 id="h">Login</h1>
         <div id="divOne">
-        <form name="mainform" action="login.php" method="post">            
+        <form name="mainform" action="#" method="post">            
             Username/Email: <input type="text" name="email" /> <br /><br />
             Password: <input type="password" name="password" /> <br />
             <?php echo '<p id="err">', $err, '</p>'; ?> <!---error message, if set -->                  

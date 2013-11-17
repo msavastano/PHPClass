@@ -29,19 +29,19 @@ class Validator {
     
      //validates whether POST data exists
      public static function loginIsValidPost() {
-          if ( !array_key_exists("username", $_POST) 
+          if ( !array_key_exists("email", $_POST) 
                 || !array_key_exists("password", $_POST) ) {
                return false;
           }          
-          return Validator::loginIsValid($_POST["username"],$_POST["password"] ); //sends into reusable validator
+          return Validator::loginIsValid($_POST["email"],$_POST["password"] ); //sends into reusable validator
      }
      //validates against strings
       public static function loginIsValid( $email, $password ) {
         //static class cannot call its own class with '$this->'
-           if( !Validator::emailIsValid($email) 
-                    || !Validator::passwordIsValid($password) ) {
-             return false;             
-           }  //checks agaist data in database
+           //if( !Validator::emailIsValid($email) 
+                   // || !Validator::passwordIsValid($password) ) {
+             //return false;             
+           //}  //checks agaist data in database
         $password = sha1($password);
         $dbCls = new DB();
         $db = $dbCls->getDB();
