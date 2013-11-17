@@ -5,12 +5,17 @@ class Signup extends DB {
     
     protected $errors = array();
     
+    //set vars
+    //$username = ( isset($_POST["username"]) ? $_POST["username"] : "" );
+    //$email = ( isset($_POST["email"]) ? $_POST["email"] : "" );
+    //$password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
+    
     //is username in da already
-    /*public function userNameIsTaken( $username ) {        
+    public function websiteNameIsTaken() {        
         $db = $this->getDB();
         if ( null != $db ) {
-            $stmt = $db->prepare('select username from signup where username = :usernameValue limit 1');
-            $stmt->bindParam(':usernameValue', $username, PDO::PARAM_STR);
+            $stmt = $db->prepare('select website from users where website = :websiteValue limit 1');
+            $stmt->bindParam(':websiteValue', $$_POST['website'], PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);            
             if ( is_array($result) && count($result) ) {
@@ -18,15 +23,15 @@ class Signup extends DB {
             }
         }
         return false;        
-    }*/
+    }
     //1st step, calls methods
     public function entryIsValid(){
-        /*$this->emailEntryIsValid();         
-        $this->usernameEntryIsValid();   
-        $this->passwordEntryIsValid()*/
-        Validator::webpageIsValid($str);
+        $this->emailEntryIsValid();         
+        $this->webpageIsValid();   
+        $this->passwordEntryIsValid();
+        /*Validator::webpageIsValid($str);
         Validator::emailIsValid($str);
-        Validator::passwordIsValid($str);
+        Validator::passwordIsValid($str);*/
         return (count($this->errors) ? false : true);
     }
     //invalid or missing email
@@ -41,20 +46,20 @@ class Signup extends DB {
         return (empty($this->errors['email']) ? true : false);
     }
     
-    /*public function usernameEntryIsValid(){
-        if (array_key_exists('username', $_POST)){
-            if ( !Validator::usernameIsValid($_POST['username'])) {
-                $this->errors['username'] = "Username is not valid";
-           }else if ($this->userNameIsTaken( $_POST['username'] )){ //checks to see if username is already in database 
-               $this->errors['username'] = "Username is taken";
+    public function websiteEntryIsValid(){
+        if (array_key_exists('website', $_POST)){
+            if ( !Validator::usernameIsValid($_POST['website'])) {
+                $this->errors['website'] = "Website is not valid";
+           }else if ($this->websiteNameIsTaken( $_POST['website'] )){ //checks to see if username is already in database 
+               $this->errors['website'] = "Website is taken";
             }
         }else{
-                $this->errors['username'] = "Username is missing";
+                $this->errors['website'] = "Username is missing";
             }
-            return (empty($this->errors['username']) ? true : false);
-    }*/
+            return (empty($this->errors['website']) ? true : false);
+    }
     //is password valid
-    /*public function passwordEntryIsValid(){
+    public function passwordEntryIsValid(){
         if (array_key_exists('password', $_POST)){
             if ( !Validator::passwordIsValid($_POST['password'])) {
                 $this->errors['password'] = "password is not valid";
@@ -63,7 +68,7 @@ class Signup extends DB {
                 $this->errors['password'] = "password is missing";
             }
             return (empty($this->errors['password']) ? true : false);
-    }*/
+    }
     
     public function saveEntry() { //revalidate on save to db - similar to week 4 signup sheet
         //if db is not null

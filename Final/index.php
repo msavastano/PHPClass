@@ -8,7 +8,12 @@
     </head>
     <body>
         <?php
-        // put your code here
+        //create array to store sign up errors
+        $entryErrors = array();
+        // create signup object
+        if (count($_POST)){
+            $signup = new Signup();
+        }
        
         ?>
         
