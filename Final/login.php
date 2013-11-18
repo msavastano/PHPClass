@@ -25,7 +25,7 @@
         //check for username and password validation with class.  Set session var and err mess
         if (isset($_POST['email']) ){
             if ( Validator::loginIsValidPost() ) { 
-                //$_SESSION['email'] = $_POST['email'];
+                $_SESSION['email'] = $_POST['email'];
                 $err = "Email and Password correct"; 
                 $_SESSION["isLoggedIn"] = true; 
             }else {
@@ -36,7 +36,7 @@
         
       //if session var is 1, redirect to admin page  
       if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
-        //header("Location: admin.php");
+        header("Location: admin.php");
         //echo "YOu're in";
       }   
       //avoid session hijack using tokens - token set on dependency page
