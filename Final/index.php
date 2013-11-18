@@ -21,6 +21,12 @@
                   $entryErrors = $signup->getErrors();//sets entry errs
              }
         }
+        
+        if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
+            header("Location: admin.php");
+            //echo "YOu're in";
+        }  
+      
        print_r($entryErrors)
         ?>
         
