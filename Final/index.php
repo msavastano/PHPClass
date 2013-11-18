@@ -45,6 +45,7 @@
             <input type="submit" value="Submit" />
                         
             </form>
+            <p> Already a member?  <a href="login.php">Log in</a>    </p>
         </div>
     </body>
 </html>

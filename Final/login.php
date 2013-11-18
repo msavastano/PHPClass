@@ -61,7 +61,7 @@
             <?php echo '<p id="err">', $err, '</p>'; ?> <!---error message, if set -->                  
             <input type="submit" value="Submit" />            
         </form>
-            
+            <p> Not a member?  <a href="index.php">Sign up</a>    </p>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
         <script src="js/jscr.js" type="text/javascript"></script>

@@ -19,5 +19,5 @@ if ( isset( $_SESSION['last_activity'] ) && isset($_SESSION["isLoggedIn"]) && $_
 }else{
     $_SESSION['last_activity'] = time();
 }
-   // $_SESSION['last_activity'] = time();
+  
 ?>
