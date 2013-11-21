@@ -1,20 +1,15 @@
-
+//get username value
 function getInput(){    
     return document.getElementById('username').value;    
 }
+
+//call ajax function from class
 function makeAjaxCall() {    
     ajax.send('contents.php', 'username='+getInput() , cb);
 }
-
-
-
-
-
-function cb(result){
-    console.log('username='+getInput());
-    console.log(result);
-    var results = JSON.parse(result);
-    
+//display ajax call
+function cb(result){    
+    var results = JSON.parse(result);   //parse string into json 
     document.getElementById("content").innerHTML = results.msg;
 }
 
