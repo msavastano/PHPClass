@@ -1,0 +1,5 @@
+html_entities
+
+new line to br
+
+strip html tags

@@ -30,7 +30,7 @@
        print_r($entryErrors)
         ?>
         
-        <div id="divOne">
+        <div id="divSignUp">
             <h1 id="h">Sign Up</h1>
             <form name="mainform" action="#" method="post">
             
