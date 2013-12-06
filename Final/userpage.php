@@ -14,10 +14,12 @@ and open the template in the editor.
     <body>
         <?php
         // put your code here
+        echo "GET array ";
         print_r($_GET);
-        
+        echo '<br />';
         if (array_key_exists('page', $_GET)){
             $prevModel = PreviewPage::getPreviewData($_GET['page']);
+            echo "prevModel array ";
             print_r($prevModel);
         }
         
