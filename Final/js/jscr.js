@@ -5,7 +5,7 @@ var signUpDiv = document.getElementById("divSignUp1"),
 var getLogin = '<?php echo $getlog; ?>',
     getSignUp = '<?php echo $getSign; ?>';
     
-    if(getLogin == ""){
+    /*if(getLogin == ""){
         loginDiv.style.display = "inline";
     }else{
         loginDiv.style.display = "none";
@@ -15,7 +15,7 @@ var getLogin = '<?php echo $getlog; ?>',
         signUpDiv.style.display = "inline";
     }else{
         signUpDiv.style.display = "none";
-    }
+    }*/
 
 console.log(getLogin);
 console.log(getSignUp);

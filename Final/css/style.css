@@ -1,13 +1,63 @@
-#divLogin{}
 
 #divLogin1
 {
-    display:none;
+    display:inline;
+    float:right;
+    margin-right: 50px;
+    
 }
-
-#divSignUp{}
 
 #divSignUp1
 {
-    display:none;
+    display:inline;
+    float:left;
+    margin-left: 50px;
+    
+}
+
+.fields
+{
+    width:400px;
+    padding:25px;
+    
+}
+
+.legends
+{
+    font-size: 20px;
+    color:appworkspace;
+}
+
+.errors
+{
+    color:red;
+}
+
+#previewButton
+{
+    border: 1px solid black;
+    height: 23px;
+    width: 150px;
+    text-align: center;
+    float: right;
+    border-radius: 3px;
+    
+}
+
+#previewButton:hover
+{
+    border: 1px solid black;
+    height: 23px;
+    width: 150px;
+    text-align: center;
+    float: right;
+    border-radius: 3px;
+    background:blanchedalmond;
+    
+}
+
+#previewButton a
+{
+    text-decoration: none;
+    color:cadetblue;
 }

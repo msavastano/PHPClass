@@ -70,6 +70,13 @@ class Signup extends DB {
             return (empty($this->errors['password']) ? true : false);
     }
     
+    
+    
+    public function getlastId(){
+        //return $this->saveEntry();
+    }
+    
+    
     public function saveEntry() { //revalidate on save to db - similar to week 4 signup sheet
         //if db is not null
         // bind all the values
@@ -84,12 +91,16 @@ class Signup extends DB {
             $stmt->bindParam(':websiteValue', $_POST['website'], PDO::PARAM_STR);
             $stmt->bindParam(':passwordValue', $_POST['password'], PDO::PARAM_STR);
             $stmt->bindParam(':emailValue', $_POST['email'], PDO::PARAM_STR);
+             
             if ($stmt->execute() ){
-                return true;
+                
+                return true; ;
             }
         }
         return false;
     }
+    
+    
     
     public function getErrors() {
         return $this->errors;

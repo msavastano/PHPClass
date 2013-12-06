@@ -17,7 +17,7 @@ and open the template in the editor.
         
         <h2>Your session has timed out</h2>
         
-        <a href="login.php">Login page</a
+        <a href="login_1.php">Login page</a>
         
     </body>
 </html>

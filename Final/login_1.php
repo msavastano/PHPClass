@@ -22,35 +22,38 @@
         //create array to store sign up errors
         $entryErrors = array();
         // create signup object
-        if (count($_POST)){
+        if (count($_POST) && array_key_exists("signup", $_POST)){
             $signup = new Signup();
+            $init = new Website();
             if($signup->entryIsValid() ){  //verify info
                  $signup->saveEntry(); //method inserts dat into database
-                 //header("Location: login.php");
-                 //show a save entry message and have a link to the login page 
+                 
+                 //$lastID = $signup->getlastId();
+                 $lastID = $init->getlastid();
+                 $init->initWebpage($lastID['user_id']);
              }else{
                   $entryErrors = $signup->getErrors();//sets entry errs
              }
         }
         
         if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
-            header("Location: admin.php");
+            header("Location: editPage.php");
             //echo "YOu're in";
         }  
       
-       print_r($entryErrors);
+       //print_r($entryErrors);
        echo "<br />";
              
         
         //set bad login message var
         $err = "";
-        print_r($_GET);
+        //print_r($_GET);
         echo "<br />";
-        print_r($_SESSION);
+        //print_r($_SESSION);
         echo "<br />";
-        print_r($_POST);
+        //print_r($_POST);
         //check for username and password validation with class.  Set session var and err mess
-        if (isset($_POST['email']) ){
+        if (isset($_POST['email']) && array_key_exists("login", $_POST)){
             if ( Validator::loginIsValidPost() ) { 
                 $_SESSION['email'] = $_POST['email'];
                 $err = "Email and Password correct"; 
@@ -63,7 +66,7 @@
         
       //if session var is 1, redirect to admin page  
       if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
-        header("Location: admin.php");
+        header("Location: editPage.php");
         //echo "YOu're in";
       }   
       //avoid session hijack using tokens - token set on dependency page
@@ -78,8 +81,25 @@
         }
         //end php
         ?> 
+        
+        
+        <div id="divLogin1">
+          <fieldset class="fields">
+           <legend class="legends">Login</legend>
+            <form name="mainform" action="#" method="post">            
+                Username/Email: <br /><input type="text" name="email" /> <br /><br />
+                Password:<br /> <input type="password" name="password" /> <br />
+                <?php echo '<p class="errors">', $err, '</p>'; ?> <!---error message, if set -->                  
+                <input type="submit" value="Log In" name="login" />            
+            </form>
+        <!--<p> Not a member?  <a href="login_1.php?signUp=1">Sign up</a>    </p>-->
+        </fieldset>
+        </div>
+        
+        
         <div id="divSignUp1">
-            <h1 id="h">Sign Up</h1>
+            <fieldset class="fields">
+                <legend class="legends">Sign Up</legend>
             <form name="mainform" action="#" method="post">
             
             Email: <br /><input type="text" name="email" /> <br />
@@ -90,23 +110,17 @@
             
             
           
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Sign Up" name="signup"/>
                         
             </form>
-            <p> Already a member?  <a href="login_1.php?login=1">Log in</a>    </p>
+           <!-- <p> Already a member?  <a href="login_1.php?login=1">Log in</a>    </p>-->
+            </fieldset>
         </div>
         
        
-        <div id="divLogin1">
-          <h1 id="h">Login</h1>
-            <form name="mainform" action="#" method="post">            
-                Username/Email: <input type="text" name="email" /> <br /><br />
-                Password: <input type="password" name="password" /> <br />
-                <?php echo '<p id="err">', $err, '</p>'; ?> <!---error message, if set -->                  
-                <input type="submit" value="Submit" />            
-            </form>
-        <p> Not a member?  <a href="login_1.php?signUp=1">Sign up</a>    </p>
-        </div>
+        
+        
+        
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
         <script src="js/jscr.js" type="text/javascript"></script>
     </body>
