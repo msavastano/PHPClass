@@ -8,5 +8,5 @@ class Config {
             DB_USER  = "root",
             DB_PASSWORD  = "",
             PAGE_TITLE = "App",
-            MAX_SESSION_TIME = 30;
+            MAX_SESSION_TIME = 60;
 }

@@ -20,6 +20,7 @@
     width:400px;
     padding:25px;
     
+    
 }
 
 .legends
@@ -60,4 +61,9 @@
 {
     text-decoration: none;
     color:cadetblue;
+}
+
+.textField
+{
+    width:200px;
 }
