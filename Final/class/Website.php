@@ -37,8 +37,8 @@ class Website extends DB{
         $dbc = new DB();
         $db = $dbc->getDB();
         
-        $statement = $db->prepare('select page.user_id, users.user_id, ' 
-                . 'users.user_id, theme, title, address, phone, page.email, about, page.page_id '
+        $statement = $db->prepare('select page.user_id, users.user_id, users.website, ' 
+                . 'theme, title, address, phone, page.email, about, page.page_id '
                 . 'from page, users '
                 . 'where users.user_id = :id AND page.user_id = users.user_id');
         $statement->bindParam(':id', $id, PDO::PARAM_INT);

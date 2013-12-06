@@ -48,6 +48,7 @@ and open the template in the editor.
         $about = $wpModel['about'];
         $pageID = $wpModel['page_id'];
         $address = $wpModel['address'];
+        $pageName = $wpModel['website'];
         
         ?>
          <h1> <?php echo $_SESSION['email']; ?> 's Page Editor </h1>
@@ -55,7 +56,7 @@ and open the template in the editor.
         
         <div id="editFormDiv">
                 <div id="previewButton">
-                    <a href="" target="_blank">Preview Your Page</a>
+                    <a href="userpage.php?page=<?php echo $pageName; ?>" target="_blank">Preview Your Page</a>
                 </div>
             <fieldset class="fields">
             
@@ -67,11 +68,11 @@ and open the template in the editor.
                 <input class="textField" name="pageTitle" id="pageTitleID" type="text" value="<?php echo $title ?>"> <br />
                 
                 <label>Theme:</label> <br />
-                <select class="textField" name="theme" id="themeID" > 
-                    <option></option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select class="textField" name="theme" id="themeID" value="<?php echo $theme ?>">  
+                    
+                    <option <?php if ($theme == 1 ) echo 'selected'; ?> value="1">Dragon Theme</option>
+                    <option <?php if ($theme == 2 ) echo 'selected'; ?> value="2">Elf Theme</option>
+                    <option <?php if ($theme == 3 ) echo 'selected'; ?> value="3">Fairy Theme</option>
                 </select><br />
                 
                 <label>About:</label> <br />
