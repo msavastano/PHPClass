@@ -70,9 +70,9 @@ and open the template in the editor.
                 <label>Theme:</label> <br />
                 <select class="textField" name="theme" id="themeID" value="<?php echo $theme ?>">  
                     
-                    <option <?php if ($theme == 1 ) echo 'selected'; ?> value="1">Dragon Theme</option>
-                    <option <?php if ($theme == 2 ) echo 'selected'; ?> value="2">Elf Theme</option>
-                    <option <?php if ($theme == 3 ) echo 'selected'; ?> value="3">Fairy Theme</option>
+                    <option <?php if ($theme == 1 ) echo 'selected'; ?> value="1">Science Fiction</option>
+                    <option <?php if ($theme == 2 ) echo 'selected'; ?> value="2">Fantasy</option>
+                    <option <?php if ($theme == 3 ) echo 'selected'; ?> value="3">Horror</option>
                 </select><br />
                 
                 <label>About:</label> <br />

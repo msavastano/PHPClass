@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 6, 2013, 10:06:35 PM
+    Author     : michael
+*/
+
+#wrap
+{
+    margin: auto;
+    width:800px;
+    height: 700px;
+    
+    
+    
+}
+
+#header
+{
+    width:800px;
+    height: 150px;
+    text-align: center;
+    /*background-color: yellowgreen;*/
+    background-image: url('../media/horror.jpg');
+    margin: auto;
+    font-family:cursive;
+    font-family:  sans-serif;
+    color:darkseagreen;    
+}
+
+body
+{
+    background:  #000000;
+}
+
+#about
+{
+    margin: auto;
+    font-size: 20px;
+    color:white;
+    width:600px;
+    border:1px solid white;
+}
