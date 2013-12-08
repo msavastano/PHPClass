@@ -15,7 +15,8 @@ class DB {
     //put your code here
     
     protected $db = null;
-
+    
+    //keep info in Config class
     public function getDB() {        
         try {
             $this->db = new PDO(Config::DB_DNS, Config::DB_USER, Config::DB_PASSWORD);
