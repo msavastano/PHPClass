@@ -45,7 +45,8 @@ class Name extends DB {
         
         $statement = $db->prepare('insert into name set name = :nameValue');
         $statement->bindParam(':nameValue', $name, PDO::PARAM_STR);
-        if ($statement->execute() ){                
+        if ($statement->execute() ){
+            echo '<p>Name Deleted</p>';
             return true;
         }
         

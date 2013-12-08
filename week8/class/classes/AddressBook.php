@@ -20,7 +20,7 @@ class AddressBook extends DB{
         $deleteID = filter_input(INPUT_GET, "delete");
         
         if ( NULL != $deleteID && Address::deleteEntry($deleteID) ) {
-            echo '<p>Entry Deleted</p>';
+            echo '<p class="msg">Entry Deleted</p>';
         }
         
     }
@@ -29,7 +29,7 @@ class AddressBook extends DB{
         $isPostEdit = filter_input(INPUT_POST, "edit");
         
         if (  NULL != $isPostEdit && Address::updateAddress($_POST)) {
-            echo '<p>Entry Updated</p>';
+            echo '<p class="msg">Entry Updated</p>';
         }
         
     }

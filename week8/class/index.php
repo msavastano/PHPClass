@@ -20,7 +20,7 @@ and open the template in the editor.
         $nm = new Name();
         $addr = new Address();
         
-        print_r($_POST);
+        //print_r($_POST);
         //print_r($_GET);
         
         $ab->checkDeletes();
@@ -50,13 +50,20 @@ and open the template in the editor.
                 print_r($_POST);
                 $nm->addName($_POST['name']);
                 $lastID = $nm->getlastid();
-                print_r($lastID);
+                //print_r($lastID);
                 $addr->createAddress($lastID, $_POST);
                 header("Location:index.php");
             }
         }
         
         
+        if(array_key_exists('create', $_POST)&&($_POST['create']=="ADD")){
+            $name = $_POST['name'];
+            $address = $_POST['address'];
+            $city = $_POST['city'];
+            $state = $_POST['state'];
+            $zip = $_POST['zip'];  
+        }else{
             $name = "";
             $address = "";
             $city = "";
@@ -64,6 +71,7 @@ and open the template in the editor.
             $zip = "";
             $addressModel = "";
             $nameModel = "";
+        }
         
         
         if ( $ab->isEdit() ) {
@@ -86,16 +94,16 @@ and open the template in the editor.
         <form action="#" method="post">
         <?php 
             if ( $ab->isEdit() ) {
-                echo '<label>Name</label> </label><input type="text" name="name" value="',$name ,'" readonly />',$nameError,'<br />' ;
+                echo '<label>Name</label> </label><input type="text" name="name" value="',$name ,'" readonly /> <span class = "error">',$nameError,'</span><br />' ;
             } else {
-               echo '<label>Name</label> <input type="text" name="name" value="',$name ,'"  />',$nameError,'<br />' ;
+               echo '<label>Name</label> <input type="text" name="name" value="',$name ,'"  /> <span class = "error">',$nameError,'</span><br />' ;
             }
             ?>
             
             <label>Address</label> <input type="text" name="address" value="<?php echo $address ?>" /><?php echo '<span class = "error">',$addrError,'</span>' ?><br />
-            <label>City</label><input type="text" name="city" value="<?php echo $city ?>" /><?php echo $cityError ?><br />
-            <label>State</label> <input type="text" name="state" value="<?php echo $state ?>" /><?php echo $stateError ?><br />
-            <label>ZIP</label> <input type="text" name="zip" value="<?php echo $zip ?>" /><?php echo $zipError ?><br />
+            <label>City</label><input type="text" name="city" value="<?php echo $city ?>" /><?php echo '<span class = "error">',$cityError,'</span>' ?><br />
+            <label>State</label> <input type="text" name="state" value="<?php echo $state ?>" /><?php echo '<span class = "error">',$stateError,'</span>' ?><br />
+            <label>ZIP</label> <input type="text" name="zip" value="<?php echo $zip ?>" /><?php echo '<span class = "error">',$zipError,'</span>' ?><br />
             <br />
             <?php 
                 if ( $ab->isEdit() ) {

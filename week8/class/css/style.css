@@ -13,13 +13,13 @@ and open the template in the editor.
      margin: auto;
      
      width:1000px;
-     text-align: center;
+     text-align: left;
 }
 
 #formDiv
 {
     border:2px solid black;
-    width:400px;
+    width:600px;
     padding:10px;
     margin: auto;
     margin-bottom: 50px;
@@ -55,7 +55,12 @@ html
 
 .error
 {
-    color: red;
+    color:darkred;
+}
+
+.msg
+{
+    color:darkred;
 }
 
 

@@ -43,7 +43,7 @@ class Validator {
     
     public static function stateValid( $str ) {
         if ( is_string($str) && !empty($str) && 
-               preg_match("/[a-z]{2}/",$str) != 0 ) {           
+               preg_match("/[a-zA-Z]{2}/",$str) != 0 ) {           
            return true;
        }
        return false; 
