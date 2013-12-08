@@ -39,4 +39,25 @@ class Name extends DB {
         return filter_input(INPUT_GET, "edit");
     }
     
+    public function addName($name){
+        $dbc = new DB();
+        $db = $dbc->getDB();
+        
+        $statement = $db->prepare('insert into name set name = :nameValue');
+        $statement->bindParam(':nameValue', $name, PDO::PARAM_STR);
+        if ($statement->execute() ){                
+            return true;
+        }
+        
+    }
+    
+    public function getlastid(){
+        $dbc = new DB();
+        $db = $dbc->getDB();
+        $statement = $db->prepare('SELECT name.id FROM name ORDER BY id DESC LIMIT 1');
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        return $result;
+    }
+    
 }

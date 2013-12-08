@@ -16,7 +16,32 @@ class Address extends DB {
     
     // todo getAddress(id), getAllAddresses(), updateAddress(id) deleteAddress(id), createAddress()
 
-    public function createAddress($name_id) {
+    public function createAddress($name_id, $postArray) {
+        $dbc = new DB();
+        $db = $dbc->getDB();
+        
+        $nameid = $name_id['id'];
+        $address = $postArray["address"];
+        $city = $postArray["city"];
+        $state = $postArray["state"];
+        $zip = $postArray["zip"];
+        
+        $statement = $db->prepare('insert into address set name_id = :name_idValue, '
+                . 'address = :addressValue, '
+                . 'city = :cityValue, '
+                . 'state = :stateValue, '
+                . 'zip = :zipValue');
+        
+        $statement->bindParam(':name_idValue', $nameid, PDO::PARAM_INT);
+        $statement->bindParam(':addressValue', $address, PDO::PARAM_STR);
+        $statement->bindParam(':stateValue', $state, PDO::PARAM_STR);
+        $statement->bindParam(':cityValue', $city, PDO::PARAM_STR);
+        $statement->bindParam(':zipValue', $zip, PDO::PARAM_STR);
+        if ( $statement->execute() ) {
+            return true;
+        }
+        
+        
         
     }
 

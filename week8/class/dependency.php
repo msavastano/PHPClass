@@ -12,6 +12,8 @@ spl_autoload_register(function($class) {
 // session
 session_start();
 session_regenerate_id(true);
+
+
         
         
 ?>

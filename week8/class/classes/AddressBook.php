@@ -50,7 +50,7 @@ class AddressBook extends DB{
         
          if ( is_array($result) && count($result) ) { 
              
-         
+            echo '<div id="displayDiv">';
             echo '<table border="1"><caption>Address Book</caption><thead><tr>';
             echo '<th>Address</th><th>City</th><th>state</th><th>ZIP</th><th>Name</th>';
             echo '<th></th><th></th>';
@@ -73,6 +73,7 @@ class AddressBook extends DB{
        } else {
            echo '<p> No Records Found </p>';
        }  
+       echo '</div>';
     }
     
 }
