@@ -91,8 +91,7 @@ and open the template in the editor.
                
                 
                 <?php echo '<input type="hidden" name="nameid" value="',$pageID,'" />'; ?>
-                <input type="submit" value="Make Edits" name="make_edits" />
-                
+                <input type="submit" value="Make Edits" name="make_edits" />       
                 
 
                     

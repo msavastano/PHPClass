@@ -10,6 +10,35 @@
     </head>
     <body>
         <?php
+            /*
+            $testName = filter_input(INPUT_POST, "website");
+            $passed = false; 
+            echo $testName;
+            //if login is blank
+            $msg = "The login is not valid";
+            if(is_string($testName) && !empty($testName)) {       
+                    $passed = true;    
+                //create object from class and test in Signup class    
+                $signupClass = new Signup();   //new signup object          
+                 if($signupClass->websiteNameIsTaken($testName)){
+                    $passed = false;
+                    $msg = $testName." has been taken";
+                 } else{
+                    $msg = $testName." is your new username";
+                    $passed = true;
+                 }      
+            }    
+            //create array
+            $results = array(
+                        'msg' => $msg,
+                        'passed' =>  $passed                       
+                    );
+            //echo array for ajax call
+            echo json_encode($results);
+        ///////
+        ///////
+             * 
+             */
         $somevar = false;
         if (isset($_GET['login'])){
             $getlog = $_GET['login'];
@@ -21,9 +50,11 @@
         }
         //create array to store sign up errors
         $entryErrors = array();
+        $signup = new Signup();
         // create signup object
-        if (count($_POST) && array_key_exists("signup", $_POST)){
-            $signup = new Signup();
+        if (count($_POST) && array_key_exists("signup", $_POST) && 
+                !$signup->websiteNameIsTaken($_POST['website'])){
+            
             $init = new Website();
             if($signup->entryIsValid() ){  //verify info
                  $signup->saveEntry(); //method inserts dat into database
@@ -47,11 +78,11 @@
         
         //set bad login message var
         $err = "";
-        //print_r($_GET);
+        print_r($_GET);
         echo "<br />";
-        //print_r($_SESSION);
+        print_r($_SESSION);
         echo "<br />";
-        //print_r($_POST);
+        print_r($_POST);
         //check for username and password validation with class.  Set session var and err mess
         if (isset($_POST['email']) && array_key_exists("login", $_POST)){
             if ( Validator::loginIsValidPost() ) { 
@@ -86,13 +117,13 @@
         <div id="divLogin1">
           <fieldset class="fields">
            <legend class="legends">Login</legend>
-            <form name="mainform" action="#" method="post">            
+            <form name="loginForm" action="#" method="post">            
                 Username/Email: <br /><input type="text" name="email" /> <br /><br />
                 Password:<br /> <input type="password" name="password" /> <br />
                 <?php echo '<p class="errors">', $err, '</p>'; ?> <!---error message, if set -->                  
                 <input type="submit" value="Log In" name="login" />            
             </form>
-        <!--<p> Not a member?  <a href="login_1.php?signUp=1">Sign up</a>    </p>-->
+        
         </fieldset>
         </div>
         
@@ -100,28 +131,25 @@
         <div id="divSignUp1">
             <fieldset class="fields">
                 <legend class="legends">Sign Up</legend>
-            <form name="mainform" action="#" method="post">
+            <form name="signupForm" action="#" method="post">
             
             Email: <br /><input type="text" name="email" /> <br />
             
-            Website:<br /> <input type="text" name="website" /> <br />
+            Website:<br /> <input type="text" name="website" id="web"/><br />
             
-            Password:<br /> <input type="password" name="password" /> <br />
-            
+            Password:<br /> <input type="password" name="password" /> <br />            
             
           
-            <input type="submit" value="Sign Up" name="signup"/>
+            <input type="submit" value="Sign Up" name="signup" id="sub"/>
                         
             </form>
-           <!-- <p> Already a member?  <a href="login_1.php?login=1">Log in</a>    </p>-->
+           
             </fieldset>
         </div>
         
-       
-        
-        
-        
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+<!--        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>-->
         <script src="js/jscr.js" type="text/javascript"></script>
+        <script src="js/json.js" type="text/javascript"></script>
+        <script src="js/ajax.js" type="text/javascript"></script>
     </body>
 </html>

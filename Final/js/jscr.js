@@ -1,23 +1,23 @@
-var signUpDiv = document.getElementById("divSignUp1"),
-    loginDiv =  document.getElementById("divLogin1");
+var subButton  = document.getElementById("sub");
 
-
-var getLogin = '<?php echo $getlog; ?>',
-    getSignUp = '<?php echo $getSign; ?>';
+function getInput(){    
+    console.log(document.getElementById('web').value);
+    return document.getElementById('web').value;    
     
-    /*if(getLogin == ""){
-        loginDiv.style.display = "inline";
-    }else{
-        loginDiv.style.display = "none";
-    }
+}
 
-    if(getSignUp == ""){
-        signUpDiv.style.display = "inline";
-    }else{
-        signUpDiv.style.display = "none";
-    }*/
 
-console.log(getLogin);
-console.log(getSignUp);
+function makeAjaxCall(){
+    console.log(getInput());
+   ajax.send('contents.php', 'website='+getInput() , cb);
+}
+//display ajax call
+function cb(result){    
+    var results = JSON.parse(result);   //parse string into json 
+    document.getElementById("content").innerHTML = results.msg;
+}
+
+
+subButton.addEventListener('click', makeAjaxCall);
 
     

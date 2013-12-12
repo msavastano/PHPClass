@@ -11,11 +11,11 @@ class Signup extends DB {
     //$password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
     
     //is username in da already
-    public function websiteNameIsTaken() {        
+    public function websiteNameIsTaken($testName) {        
         $db = $this->getDB();
         if ( null != $db ) {
             $stmt = $db->prepare('select website from users where website = :websiteValue limit 1');
-            $stmt->bindParam(':websiteValue', $$_POST['website'], PDO::PARAM_STR);
+            $stmt->bindParam(':websiteValue', $testName, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);            
             if ( is_array($result) && count($result) ) {

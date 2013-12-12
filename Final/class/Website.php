@@ -18,10 +18,10 @@ class Website extends DB{
         $db = $dbc->getDB();
         
         $statement = $db->prepare('insert into page set user_id = :user_id' );                
-                $statement->bindParam(':user_id', $lastID, PDO::PARAM_INT);
-                if ($statement->execute() ){                
-                    return true;
-                }        
+        $statement->bindParam(':user_id', $lastID, PDO::PARAM_INT);
+            if ($statement->execute() ){                
+                return true;
+            }        
     }
     
     public function getlastid(){
