@@ -1,7 +1,7 @@
-var subButton  = document.getElementById("sub");
+var webby  = document.getElementById("web");
 
 function getInput(){    
-    console.log(document.getElementById('web').value);
+    
     return document.getElementById('web').value;    
     
 }
@@ -14,10 +14,15 @@ function makeAjaxCall(){
 //display ajax call
 function cb(result){    
     var results = JSON.parse(result);   //parse string into json 
-    document.getElementById("content").innerHTML = results.msg;
+    document.getElementById("content").innerHTML = results.msg + " " + results.name + " " + results.passed ;
+    if(results.passed == false){
+        document.getElementById("sub").disabled = true;
+    }else{
+        document.getElementById("sub").disabled = false;
+    }
 }
 
 
-subButton.addEventListener('click', makeAjaxCall);
+
 
     

@@ -111,6 +111,7 @@
             }
         }
         //end php
+       
         ?> 
         
         
@@ -135,7 +136,7 @@
             
             Email: <br /><input type="text" name="email" /> <br />
             
-            Website:<br /> <input type="text" name="website" id="web"/><br />
+            Website:<br /> <input type="text" onblur="makeAjaxCall();" name="website" id="web"/><div id="content"></div><br />
             
             Password:<br /> <input type="password" name="password" /> <br />            
             

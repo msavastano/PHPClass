@@ -3,7 +3,7 @@
 <?php
 //test usernsme
 $testName = filter_input(INPUT_POST, "website");
- echo $testName;
+ 
 $passed = false; 
 //if login is blank
 $msg = "The login is not valid";
@@ -22,8 +22,11 @@ if(is_string($testName) && !empty($testName)) {
 //create array
 $results = array(
             'msg' => $msg,
-            'passed' =>  $passed            
+            'passed' =>  $passed,
+            'name' => $testName
         );
+
+
 //echo array for ajax call
 echo json_encode($results);
         
