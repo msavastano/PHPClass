@@ -16,19 +16,19 @@ and open the template in the editor.
         
         //TEST CODE
         //print_r($_SESSION);
-        echo "<br />";
+        //echo "<br />";
         //print_r($_POST);
         
         //if there is no log in redirect back to login page
         if (empty($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn'] ){            
-            header("Location:login_1.php");
+            header("Location:index.php");
         }
         
         //check $_GET and redirect if logout is presses
         if ( isset( $_GET["logout"] ) ){
             if ( $_GET["logout"] == "1" ) { 
                 session_destroy();
-                header("Location:login_1.php"); //set a get var                
+                header("Location:index.php"); //set a get var                
             }
         }
         
@@ -40,7 +40,7 @@ and open the template in the editor.
         //print_r($userID);
         $wpModel = $ws->getWebsiteData($userID['user_id']);
         
-        print_r($wpModel);
+        //print_r($wpModel);
         $title = $wpModel['title'];
         $phone = $wpModel['phone'];
         $email = $wpModel['email'];
@@ -51,14 +51,21 @@ and open the template in the editor.
         $pageName = $wpModel['website'];
         
         ?>
-         <h1> <?php echo $_SESSION['email']; ?> 's Page Editor </h1>
-         <a href="editPage.php?logout=1">LOGOUT</a>
         
-        <div id="editFormDiv">
-                <div id="previewButton">
-                    <a href="userpage.php?page=<?php echo $pageName; ?>" target="_blank">Preview Your Page</a>
+        <div id="cent">
+            <div id="edithead">
+                <h1> <?php echo $_SESSION['email']; ?> 's Page Editor </h1>
+            </div>
+         
+                <div class="previewButton">
+                    <a href="editPage.php?logout=1">-===LOGOUT===-</a>
                 </div>
-            <fieldset class="fields">
+        <br />
+        <div id="editFormDiv">
+                <div class="previewButton">
+                    <a href="userpage.php?page=<?php echo $pageName; ?>" target="_blank">-=Go To Your Page=-</a>
+                </div>
+            
             
             <form name="editForm" action="#" method="post">
                 
@@ -76,10 +83,8 @@ and open the template in the editor.
                 </select><br />
                 
                 <label>About:</label> <br />
-                <textarea name="about" id="aboutID" cols="40" rows="10"><?php echo $about ?></textarea><br /> 
-            </fieldset>
-                
-                <fieldset class="fields">
+                <textarea name="about" id="aboutID" cols="34" rows="10"><?php echo $about ?></textarea><br /> 
+           
                 
                     <label>Address:</label> <br />
                     <input class="textField" name="address" id="addressID" type="text" value="<?php echo $address ?>"> <br />
@@ -87,7 +92,7 @@ and open the template in the editor.
                     <input class="textField" name="phone" id="phoneID" type="text" value="<?php echo $phone ?>"> <br />
                     <label>Email:</label> <br />
                     <input class="textField" name="email" id="emailID" type="text" value="<?php echo $email ?>"> <br />
-                </fieldset>
+                
                
                 
                 <?php echo '<input type="hidden" name="nameid" value="',$pageID,'" />'; ?>
@@ -97,6 +102,7 @@ and open the template in the editor.
                     
             </form>
             </fieldset>
+        </div>
         </div>
     </body>
 </html>

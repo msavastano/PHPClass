@@ -10,35 +10,7 @@
     </head>
     <body>
         <?php
-            /*
-            $testName = filter_input(INPUT_POST, "website");
-            $passed = false; 
-            echo $testName;
-            //if login is blank
-            $msg = "The login is not valid";
-            if(is_string($testName) && !empty($testName)) {       
-                    $passed = true;    
-                //create object from class and test in Signup class    
-                $signupClass = new Signup();   //new signup object          
-                 if($signupClass->websiteNameIsTaken($testName)){
-                    $passed = false;
-                    $msg = $testName." has been taken";
-                 } else{
-                    $msg = $testName." is your new username";
-                    $passed = true;
-                 }      
-            }    
-            //create array
-            $results = array(
-                        'msg' => $msg,
-                        'passed' =>  $passed                       
-                    );
-            //echo array for ajax call
-            echo json_encode($results);
-        ///////
-        ///////
-             * 
-             */
+            
         $somevar = false;
         if (isset($_GET['login'])){
             $getlog = $_GET['login'];
@@ -78,11 +50,11 @@
         
         //set bad login message var
         $err = "";
-        print_r($_GET);
-        echo "<br />";
-        print_r($_SESSION);
-        echo "<br />";
-        print_r($_POST);
+        //print_r($_GET);
+       // echo "<br />";
+        //print_r($_SESSION);
+        //echo "<br />";
+        //print_r($_POST);
         //check for username and password validation with class.  Set session var and err mess
         if (isset($_POST['email']) && array_key_exists("login", $_POST)){
             if ( Validator::loginIsValidPost() ) { 
@@ -134,7 +106,7 @@
                 <legend class="legends">Sign Up</legend>
             <form name="signupForm" action="#" method="post">
             
-            Email: <br /><input type="text" name="email" /> <br />
+            Email: <br /><input type="text" name="email" /> <br /><br />
             
             Website:<br /> <input type="text" onblur="makeAjaxCall();" name="website" id="web"/><div id="content"></div><br />
             

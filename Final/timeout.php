@@ -8,7 +8,8 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Final</title>
+        <title>TIMEOUT</title>
+         <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body>
         <?php
@@ -17,7 +18,7 @@ and open the template in the editor.
         
         <h2>Your session has timed out</h2>
         
-        <a href="login_1.php">Login page</a>
+        <a href="index.php">Login page</a>
         
     </body>
 </html>

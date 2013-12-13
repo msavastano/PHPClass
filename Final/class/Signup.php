@@ -5,10 +5,7 @@ class Signup extends DB {
     
     protected $errors = array();
     
-    //set vars
-    //$username = ( isset($_POST["username"]) ? $_POST["username"] : "" );
-    //$email = ( isset($_POST["email"]) ? $_POST["email"] : "" );
-    //$password = ( isset($_POST["password"]) ? $_POST["password"] : "" );
+    
     
     //is username in da already
     public function websiteNameIsTaken($testName) {        
@@ -24,14 +21,14 @@ class Signup extends DB {
         }
         return false;        
     }
+    
+    
     //1st step, calls methods
     public function entryIsValid(){
         $this->emailEntryIsValid();         
         $this->websiteEntryIsValid();   
         $this->passwordEntryIsValid();
-        /*Validator::webpageIsValid($str);
-        Validator::emailIsValid($str);
-        Validator::passwordIsValid($str);*/
+        
         return (count($this->errors) ? false : true);
     }
     //invalid or missing email
@@ -39,6 +36,9 @@ class Signup extends DB {
         if (array_key_exists('email', $_POST)){
                 if ( !Validator::emailIsValid($_POST['email'])){
                     $this->errors['email'] = "Email is not valid";  
+                 }
+                 else if( Validator::emailIsTaken($_POST['email'])){
+                     $this->errors['email'] = "Email is already taken.  Please log in"; 
                  }
         }else{
             $this->errors['email'] = "Email is missing";            
@@ -49,9 +49,7 @@ class Signup extends DB {
     public function websiteEntryIsValid(){
         if (array_key_exists('website', $_POST)){
             if ( !Validator::webpageIsValid($_POST['website'])) {
-                $this->errors['website'] = "Website is not valid";
-           }else if ($this->websiteNameIsTaken( $_POST['website'] )){ //checks to see if username is already in database 
-               $this->errors['website'] = "Website is taken";
+                $this->errors['website'] = "Website only takes alpha characters, [a-Z]";
             }
         }else{
                 $this->errors['website'] = "Username is missing";
@@ -62,7 +60,7 @@ class Signup extends DB {
     public function passwordEntryIsValid(){
         if (array_key_exists('password', $_POST)){
             if ( !Validator::passwordIsValid($_POST['password'])) {
-                $this->errors['password'] = "password is not valid";
+                $this->errors['password'] = "letters (A-z), numbers (0-9), underscores, or hyphens. 3-16 chars";
             }
         }else{
                 $this->errors['password'] = "password is missing";

@@ -15,12 +15,31 @@
     
 }
 
+#editFormDiv
+{
+}
+
 .fields
 {
     width:400px;
     padding:25px;
     
     
+}
+
+input[type=text]
+{
+   width:300px;
+}
+
+input[type=password]
+{
+   width:300px;
+}
+
+input[type=select]
+{
+   width:300px;
 }
 
 .legends
@@ -31,39 +50,82 @@
 
 .errors
 {
-    color:red;
+    color:aliceblue;
 }
 
-#previewButton
+.previewButton
 {
     border: 1px solid black;
-    height: 23px;
+    height: 20px;
     width: 150px;
     text-align: center;
-    float: right;
+    float: center;
     border-radius: 3px;
+    background:darkgrey;
     
 }
 
-#previewButton:hover
+.previewButton:hover
 {
     border: 1px solid black;
-    height: 23px;
+    height: 20px;
     width: 150px;
     text-align: center;
-    float: right;
+    float: center;
     border-radius: 3px;
     background:blanchedalmond;
     
+    
 }
 
-#previewButton a
+.previewButton a
 {
     text-decoration: none;
-    color:cadetblue;
+    color:black;
+}
+
+#edithead
+{
+    background:honeydew;
+    text-align: center;
+    border-radius: 4px;
+    width:75%;
+    margin: 0 auto;
+    color:black;
+    
 }
 
 .textField
 {
-    width:200px;
+    width:300px;
+}
+
+body
+{
+    background: -webkit-linear-gradient(#660000, #707070); /* For Safari */
+    background: -o-linear-gradient(#660000, #707070); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#660000, #707070); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#a00000, #707070); /* Standard syntax */
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+html
+{
+    height: 100%;
+    color:white;
+}
+
+#cent
+{
+   
+    position: fixed;
+    left: 27%;
+}
+label
+{
+    font-size: 22px;
+    color:tan;
 }
