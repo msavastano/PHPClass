@@ -11,14 +11,10 @@ and open the template in the editor.
         <title>TIMEOUT</title>
          <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-        
-        <h2>Your session has timed out</h2>
-        
-        <a href="index.php">Login page</a>
-        
+    <body>       
+        <h2>Your session has timed out</h2> 
+        <div style="background: white; width: 75px;">
+            <a href="index.php">Login page</a>  
+        </div>
     </body>
 </html>

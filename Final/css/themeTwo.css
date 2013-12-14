@@ -1,12 +1,4 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Dec 6, 2013, 10:06:35 PM
-    Author     : michael
-*/
+/*horror theme*/
 
 #wrap
 {
@@ -19,19 +11,16 @@ and open the template in the editor.
 {
     width:800px;
     height: 150px;
-    text-align: right;
-    /*background-color: yellowgreen;*/
+    text-align: right;    
     background-image: url('../media/fantasy.jpg');
-    margin: auto;
-    
+    margin: auto;    
     font-family:  sans-serif;
     color:seashell;
 }
 
 body
 {
-    background: #cccccc;
-    
+    background: #cccccc;    
 }
 
 #about
@@ -39,8 +28,7 @@ body
     margin: auto;
     font-size: 20px;
     color:black;
-    width:600px;
-    
+    width:600px;    
 }
 
 #contact
@@ -48,6 +36,5 @@ body
     margin: auto;
     font-size: 20px;
     color:black;
-    width:600px;
-    
+    width:600px;    
 }

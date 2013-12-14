@@ -1,18 +1,9 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of Website
- *
- * @author michael
- */
 class Website extends DB{
     
+    //iniates web page on user creation
     public function initWebpage($lastID){
         $dbc = new DB();
         $db = $dbc->getDB();        
@@ -41,6 +32,7 @@ class Website extends DB{
             }        
     }
     
+    //retrieves the last id from users table
     public function getlastid(){
         $dbc = new DB();
         $db = $dbc->getDB();
@@ -50,6 +42,7 @@ class Website extends DB{
         return $result;
     }
     
+    //gets all data from website table
     public function getWebsiteData($id) {
         $dbc = new DB();
         $db = $dbc->getDB();        
@@ -75,9 +68,8 @@ class Website extends DB{
         return $result;
     }
     
+    //updates the page data from edit form
     public function updatePageData($data){
-        
-                    
             $dbc = new DB();
             $db = $dbc->getDB();
             if (count($data) ) {

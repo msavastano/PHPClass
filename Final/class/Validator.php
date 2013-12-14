@@ -11,7 +11,7 @@ class Validator {
        }        
        return false; 
     }
-    //checks for string NEED VALIDATION REGEX
+    //checks for string , only alpha
     public static function webpageIsValid( $str ) {
        if ( is_string($str) && !empty($str) && 
                preg_match("/^[A-Za-z]+$/",$str) != 0) {           
@@ -20,6 +20,7 @@ class Validator {
        return false; 
     }
     
+    //checks db for email
     public static function emailIsTaken($emailName) {        
         $dbClass = new DB();
         $db = $dbClass->getDB();
@@ -34,8 +35,7 @@ class Validator {
             return false;        
     }
     
-    //checks for string
-    //^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{4,8}$
+    //checks for string , hypens nums dashes 6-16 chars   
     public static function passwordIsValid( $str ) {
        if ( is_string($str) && !empty($str) && 
                preg_match("/^[A-Za-z0-9_-]{6,18}$/",$str) != 0  ) {           
@@ -44,7 +44,7 @@ class Validator {
        return false; 
     }
     
-     //validates whether POST data exists
+     //validates whether POST data exists in login
      public static function loginIsValidPost() {
           if ( !array_key_exists("email", $_POST) 
                 || !array_key_exists("password", $_POST) ) {
@@ -53,12 +53,7 @@ class Validator {
           return Validator::loginIsValid($_POST["email"],$_POST["password"] ); //sends into reusable validator
      }
      //validates against strings
-      public static function loginIsValid( $email, $password ) {
-        //static class cannot call its own class with '$this->'
-           //if( !Validator::emailIsValid($email) 
-                   // || !Validator::passwordIsValid($password) ) {
-             //return false;             
-           //}  //checks agaist data in database
+      public static function loginIsValid( $email, $password ) {        
         $password = sha1($password);
         $dbCls = new DB();
         $db = $dbCls->getDB();

@@ -1,12 +1,4 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Dec 6, 2013, 10:06:35 PM
-    Author     : michael
-*/
+/* science fiction theme*/
 
 #wrap
 {
@@ -19,11 +11,9 @@ and open the template in the editor.
 {
     width:800px;
     height: 150px;
-    text-align: center;
-    /*background-color: yellowgreen;*/
+    text-align: center;    
     background-image: url('../media/scifi.jpg');
-    margin: auto;
-    
+    margin: auto;    
     font-family:  sans-serif;
     color:darkseagreen;
 }
@@ -47,6 +37,5 @@ body
     margin: auto;
     font-size: 20px;
     color:white;
-    width:600px;
-    
+    width:600px;    
 }

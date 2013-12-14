@@ -1,25 +1,15 @@
 <?php include 'dependency.php'; //includes all classes and sets up session ?> 
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <meta charset="UTF-8">
         <title>User Page - use php here</title>
-        <?php
+        <?php        
         
-        //echo "GET array ";
-        //print_r($_GET);
-        //echo '<br />';
         if (array_key_exists('page', $_GET)){
-            $prevModel = PreviewPage::getPreviewData($_GET['page']);
-            //echo "prevModel array ";
-            //print_r($prevModel);
-        }
-        
+            $prevModel = PreviewPage::getPreviewData($_GET['page']);            
+        }        
             if (array_key_exists('theme',$prevModel)){
                 if ($prevModel['theme']=="1"){
                     echo '<link rel="stylesheet" type="text/css" href="css/themeOne.css" />';
@@ -34,11 +24,6 @@ and open the template in the editor.
         ?>
     </head>
     <body>
-        <?php
-        // put your code here
-        
-        
-        ?>
         
         <div id="wrap">
             <div id="header">

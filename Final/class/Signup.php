@@ -2,11 +2,7 @@
 
 class Signup extends DB {
     
-    
-    protected $errors = array();
-    
-    
-    
+    protected $errors = array(); // array to store errors that appear on page
     //is username in da already
     public function websiteNameIsTaken($testName) {        
         $db = $this->getDB();
@@ -21,20 +17,18 @@ class Signup extends DB {
         }
         return false;        
     }
-    
-    
-    //1st step, calls methods
+    //1st step, calls methods that check entries
     public function entryIsValid(){
         $this->emailEntryIsValid();         
         $this->websiteEntryIsValid();   
-        $this->passwordEntryIsValid();
-        
+        $this->passwordEntryIsValid();        
         return (count($this->errors) ? false : true);
     }
+    
     //invalid or missing email
     public function emailEntryIsValid(){
         if (array_key_exists('email', $_POST)){
-                if ( !Validator::emailIsValid($_POST['email'])){
+                if ( !Validator::emailIsValid($_POST['email'])){ //checks validator class for specific conditions
                     $this->errors['email'] = "Email is not valid";  
                  }
                  else if( Validator::emailIsTaken($_POST['email'])){
@@ -68,18 +62,10 @@ class Signup extends DB {
             return (empty($this->errors['password']) ? true : false);
     }
     
-    
-    
-    public function getlastId(){
-        //return $this->saveEntry();
-    }
-    
-    
     public function saveEntry() { //revalidate on save to db - similar to week 4 signup sheet
-        //if db is not null
-        // bind all the values
+        //if db is not null bind all the values
         //hash password
-        //if execute
+       
         if (! $this->entryIsValid() ) return false;
         $_POST['password'] = sha1($_POST['password']);
         $db = $this->getDB();
@@ -90,20 +76,17 @@ class Signup extends DB {
             $stmt->bindParam(':passwordValue', $_POST['password'], PDO::PARAM_STR);
             $stmt->bindParam(':emailValue', $_POST['email'], PDO::PARAM_STR);
              
-            if ($stmt->execute() ){
-                
+            if ($stmt->execute() ){                
                 return true; ;
             }
         }
         return false;
     }
     
-    
-    
+    //returns all errors
     public function getErrors() {
         return $this->errors;
     }
 }
-
 
 ?>

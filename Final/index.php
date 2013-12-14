@@ -9,17 +9,8 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body>
-        <?php
-            
-        /*$somevar = false;
-        if (isset($_GET['login'])){
-            $getlog = $_GET['login'];
-            echo 'getlog', ' ', $getlog;
-        }
-        if (isset($_GET['signUp'])){
-            $getSign = $_GET['signUp'];
-            echo 'getsign', ' ', $getSign;
-        }*/
+        <?php            
+        
         //create array to store sign up errors
         $entryErrors = array();
         $signup = new Signup();
@@ -37,22 +28,11 @@
                   $entryErrors = $signup->getErrors();//sets entry errs
              }
         }
-        //print_r($entryErrors);        
+         
         if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
-            header("Location: editPage.php");
-            //echo "YOu're in";
+            header("Location: editPage.php");            
         }        
-       //print_r($entryErrors);
-       //echo "<br />";         
-        
-        //set bad login message var
-        
-        //print_r($_GET);
-        // echo "<br />";
-        //print_r($_SESSION);
-        //echo "<br />";
-        //print_r($_POST);
-        //check for username and password validation with class.  Set session var and err mess
+       
         $err = "";
         if (isset($_POST['email']) && array_key_exists("login", $_POST)){
             if ( Validator::loginIsValidPost() ) { 
