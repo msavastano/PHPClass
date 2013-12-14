@@ -26,7 +26,7 @@ and open the template in the editor.
     /*background-color: yellowgreen;*/
     background-image: url('../media/horror.jpg');
     margin: auto;
-    font-family:cursive;
+    
     font-family:  sans-serif;
     color:darkseagreen;    
 }
@@ -43,5 +43,14 @@ body
     font-size: 20px;
     color:white;
     width:600px;
-    border:1px solid white;
+    
+}
+
+#contact
+{
+    margin: auto;
+    font-size: 20px;
+    color:white;
+    width:600px;
+    
 }

@@ -11,13 +11,13 @@ and open the template in the editor.
         <title>User Page - use php here</title>
         <?php
         
-        echo "GET array ";
-        print_r($_GET);
-        echo '<br />';
+        //echo "GET array ";
+        //print_r($_GET);
+        //echo '<br />';
         if (array_key_exists('page', $_GET)){
             $prevModel = PreviewPage::getPreviewData($_GET['page']);
-            echo "prevModel array ";
-            print_r($prevModel);
+            //echo "prevModel array ";
+            //print_r($prevModel);
         }
         
             if (array_key_exists('theme',$prevModel)){
@@ -45,10 +45,14 @@ and open the template in the editor.
                 <?php echo "<h1>",$prevModel['title'],"</h1>"; ?>
             </div>    
             <div id="about">
-                <h3>ABOUT:</h3>
+                <fieldset>
+                <legend>ABOUT</legend>               
                 <?php echo "<p>",$prevModel['about'],"<p>"; ?>
+                </fieldset>
             </div>
-            <div id=""contact">
+            <div id="contact">
+                 <fieldset>
+                    <legend>Contact</legend>
                 <div id="eml">
                     <h3>EMAIL:</h3>
                     <?php echo "<p>",$prevModel['email'],"<p>"; ?>
@@ -63,6 +67,7 @@ and open the template in the editor.
                     <h3>ADDRESS:</h3>
                     <?php echo "<p>",$prevModel['address'],"<p>"; ?>
                 </div>
+                </fieldset>
             </div>
         </div>
     </body>

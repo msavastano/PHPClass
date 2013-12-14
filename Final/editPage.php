@@ -53,8 +53,9 @@ and open the template in the editor.
         ?>
         
         <div id="cent">
-            <div id="edithead">
-                <h1> <?php echo $_SESSION['email']; ?> 's Page Editor </h1>
+            <div class="head">
+                <!--<?php echo $_SESSION['email']; ?> 's Page Editor -->
+                <div><span id="s">S</span><span id="imple">imple</span><span id="aas">aaS</span>   </div>
             </div>
          
                 <div class="previewButton">
@@ -63,6 +64,7 @@ and open the template in the editor.
         <br />
         <div id="editFormDiv">
                 <div class="previewButton">
+                    
                     <a href="userpage.php?page=<?php echo $pageName; ?>" target="_blank">-=Go To Your Page=-</a>
                 </div>
             

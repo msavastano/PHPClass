@@ -60,7 +60,7 @@ class Signup extends DB {
     public function passwordEntryIsValid(){
         if (array_key_exists('password', $_POST)){
             if ( !Validator::passwordIsValid($_POST['password'])) {
-                $this->errors['password'] = "letters (A-z), numbers (0-9), underscores, or hyphens. 3-16 chars";
+                $this->errors['password'] = "letters (A-z), numbers (0-9), underscores, or hyphens. 6-16 chars";
             }
         }else{
                 $this->errors['password'] = "password is missing";

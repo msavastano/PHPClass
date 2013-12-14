@@ -12,35 +12,42 @@ and open the template in the editor.
 {
     margin: auto;
     width:800px;
-    height: 700px;
-    
-    
-    
+    height: 700px;    
 }
 
 #header
 {
     width:800px;
     height: 150px;
-    text-align: center;
+    text-align: right;
     /*background-color: yellowgreen;*/
     background-image: url('../media/fantasy.jpg');
     margin: auto;
-    font-family:cursive;
+    
     font-family:  sans-serif;
-    color:darkseagreen;
+    color:seashell;
 }
 
 body
 {
     background: #cccccc;
+    
 }
 
 #about
 {
     margin: auto;
     font-size: 20px;
-    color:white;
+    color:black;
     width:600px;
-    border:1px solid white;
+    
+}
+
+#contact
+{
+    margin: auto;
+    font-size: 20px;
+    color:black;
+    width:600px;
+    
 }

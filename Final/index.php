@@ -11,7 +11,7 @@
     <body>
         <?php
             
-        $somevar = false;
+        /*$somevar = false;
         if (isset($_GET['login'])){
             $getlog = $_GET['login'];
             echo 'getlog', ' ', $getlog;
@@ -19,7 +19,7 @@
         if (isset($_GET['signUp'])){
             $getSign = $_GET['signUp'];
             echo 'getsign', ' ', $getSign;
-        }
+        }*/
         //create array to store sign up errors
         $entryErrors = array();
         $signup = new Signup();
@@ -29,34 +29,31 @@
             
             $init = new Website();
             if($signup->entryIsValid() ){  //verify info
-                 $signup->saveEntry(); //method inserts dat into database
-                 
-                 //$lastID = $signup->getlastId();
+                 $signup->saveEntry(); //method inserts dat into database     
                  $lastID = $init->getlastid();
                  $init->initWebpage($lastID['user_id']);
+                 echo '<div id="userCr"><span>User Created</span></div>';
              }else{
                   $entryErrors = $signup->getErrors();//sets entry errs
              }
         }
-        print_r($entryErrors);
-        
+        //print_r($entryErrors);        
         if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
             header("Location: editPage.php");
             //echo "YOu're in";
-        }  
-      
+        }        
        //print_r($entryErrors);
-       echo "<br />";
-             
+       //echo "<br />";         
         
         //set bad login message var
-        $err = "";
+        
         //print_r($_GET);
-       // echo "<br />";
+        // echo "<br />";
         //print_r($_SESSION);
         //echo "<br />";
-        print_r($_POST);
+        //print_r($_POST);
         //check for username and password validation with class.  Set session var and err mess
+        $err = "";
         if (isset($_POST['email']) && array_key_exists("login", $_POST)){
             if ( Validator::loginIsValidPost() ) { 
                 $_SESSION['email'] = $_POST['email'];
@@ -83,11 +80,12 @@
                 exit();
             }
         }
-        //end php
+        
        
         ?> 
-        
-        
+        <div class="head">
+            <div><span id="s">S</span><span id="imple">imple</span><span id="aas">aaS</span>   </div>
+        </div>
         <div id="divLogin1">
           <fieldset class="fields">
            <legend class="legends">Login</legend>
@@ -113,9 +111,6 @@
             
             <label>Password:</label><br /> <input type="password" name="password" /> <div class="entryError"><?php if(array_key_exists('password', $entryErrors)) echo $entryErrors['password']; ?><br /> 
             
-           
-            
-          
             <input type="submit" value="Sign Up" name="signup" id="sub"/>
                         
             </form>
@@ -123,7 +118,7 @@
             </fieldset>
         </div>
         
-<!--        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
         <script src="js/jscr.js" type="text/javascript"></script>
         <script src="js/json.js" type="text/javascript"></script>
         <script src="js/ajax.js" type="text/javascript"></script>

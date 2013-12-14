@@ -15,10 +15,27 @@ class Website extends DB{
     
     public function initWebpage($lastID){
         $dbc = new DB();
-        $db = $dbc->getDB();
-        
-        $statement = $db->prepare('insert into page set user_id = :user_id' );                
+        $db = $dbc->getDB();        
+        $statement = $db->prepare('insert into page set user_id = :user_id, '
+                . 'title = :titleDummy, '
+                . 'theme = :themeDummy, '
+                . 'address = :addressDummy, '
+                . 'phone = :phoneDummy, '
+                . 'email = :emailDummy, '
+                . 'about = :aboutDummy');   
+                $dumTitle = 'title goes here';
+                $dumTheme = '1';
+                $dumAddress = 'address';
+                $dumPhone = '';
+                $dumEmail = 'sample-email@sample.com';
+                $dumAbout = 'this site is about';
         $statement->bindParam(':user_id', $lastID, PDO::PARAM_INT);
+        $statement->bindParam(':titleDummy', $dumTitle , PDO::PARAM_STR);
+        $statement->bindParam(':themeDummy', $dumTheme, PDO::PARAM_STR);
+        $statement->bindParam(':addressDummy', $dumAddress, PDO::PARAM_STR);
+        $statement->bindParam(':phoneDummy', $dumPhone, PDO::PARAM_STR);
+        $statement->bindParam(':emailDummy', $dumEmail, PDO::PARAM_STR);
+        $statement->bindParam(':aboutDummy', $dumAbout, PDO::PARAM_STR);
             if ($statement->execute() ){                
                 return true;
             }        
@@ -35,8 +52,7 @@ class Website extends DB{
     
     public function getWebsiteData($id) {
         $dbc = new DB();
-        $db = $dbc->getDB();
-        
+        $db = $dbc->getDB();        
         $statement = $db->prepare('select page.user_id, users.user_id, users.website, ' 
                 . 'theme, title, address, phone, page.email, about, page.page_id '
                 . 'from page, users '
@@ -71,7 +87,7 @@ class Website extends DB{
                 $title = $data['pageTitle'];
                 $email = $data['email'];
                 $phone = $data['phone'];
-                $about = $data['about'];
+                $about = strip_tags($data['about']);
                 
             $statement = $db->prepare('update page set'
                     .' address = :address, title = :title,'
@@ -87,6 +103,7 @@ class Website extends DB{
             $statement->bindParam(':phone', $phone, PDO::PARAM_STR);
             
             if ( $statement->execute() ) {
+                echo '<div id="userUp"><span>User Updated</span></div>';
                 return true;
             }
             }
