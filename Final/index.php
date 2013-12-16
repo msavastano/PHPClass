@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Login TEST- Final</title>
+        <title>SaaS Final</title>
         <link rel="stylesheet" type="text/css" href="css/style.css" />
     </head>
     <body>
@@ -28,11 +28,11 @@
                   $entryErrors = $signup->getErrors();//sets entry errs
              }
         }
-         
+        //check log in
         if ( isset($_SESSION["isLoggedIn"]) && $_SESSION["isLoggedIn"] == true ) {
             header("Location: editPage.php");            
         }        
-       
+        //set errors var for display in validation
         $err = "";
         if (isset($_POST['email']) && array_key_exists("login", $_POST)){
             if ( Validator::loginIsValidPost() ) { 
@@ -59,12 +59,11 @@
                 header("Location:index.php");
                 exit();
             }
-        }
-        
-       
+        }      
         ?> 
+        
         <div class="head">
-            <div><span id="s">S</span><span id="imple">imple</span><span id="aas">aaS</span>   </div>
+            <div> <span id="s">S</span><span id="imple">imple</span><span id="aas">aaS</span>   </div>
         </div>
         <div id="divLogin1">
           <fieldset class="fields">

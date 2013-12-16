@@ -21,13 +21,21 @@
                 header("Location:index.php"); //set a get var                
             }
         }
+       
+        $ws = new Website();
+         
+        //make sure a timedout session isn't changing values before redirecting to timeoute page
+        if ( isset( $_SESSION['last_activity'] ) && isset($_SESSION["isLoggedIn"]) && 
+        $_SESSION["isLoggedIn"] == true && time() < $_SESSION['last_activity'] +
+        Config::MAX_SESSION_TIME){
+            //Website object updates data                   
+            $ws->updatePageData($_POST);            
+        }
         
-        $ws = new Website();        
-        $ws->updatePageData($_POST);
-        
+        //gets last id from users table and creates page
         $userID = $ws->getUserID($_SESSION['email']);       
         $wpModel = $ws->getWebsiteData($userID['user_id']);        
-        
+        //create variables
         $title = $wpModel['title'];
         $phone = $wpModel['phone'];
         $email = $wpModel['email'];
@@ -43,12 +51,13 @@
             <div class="head">                
                 <div><span id="s">S</span><span id="imple">imple</span><span id="aas">aaS</span>   </div>
             </div>
-         
+                <!---logout button--->
                 <div class="previewButton">
                     <a href="editPage.php?logout=1">-===LOGOUT===-</a>
                 </div>
         <br />
         <div id="editFormDiv">
+                <!---page button--->    
                 <div class="previewButton">                    
                     <a href="userpage.php?page=<?php echo $pageName; ?>" target="_blank">-=Go To Your Page=-</a>
                 </div>            
@@ -61,6 +70,7 @@
                 <input class="textField" name="pageTitle" id="pageTitleID" type="text" value="<?php echo $title ?>"> <br />
                 
                 <label>Theme:</label> <br />
+                <!---select correct theme--->
                 <select class="textField" name="theme" id="themeID" value="<?php echo $theme ?>">                     
                     <option <?php if ($theme == 1 ) echo 'selected'; ?> value="1">Science Fiction</option>
                     <option <?php if ($theme == 2 ) echo 'selected'; ?> value="2">Fantasy</option>
@@ -76,7 +86,7 @@
                 <input class="textField" name="phone" id="phoneID" type="text" value="<?php echo $phone ?>"> <br />
                 <label>Email:</label> <br />
                 <input class="textField" name="email" id="emailID" type="text" value="<?php echo $email ?>"> <br />  
-                
+                <!---hidden variable update correct row in page table--->
                 <?php echo '<input type="hidden" name="nameid" value="',$pageID,'" />'; ?>
                 <input type="submit" value="Make Edits" name="make_edits" />                        
             </form>
